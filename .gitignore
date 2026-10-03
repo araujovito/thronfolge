@@ -1,0 +1,13 @@
+# Godot
+.godot/
+
+# Builds e artefatos locais
+build/
+dist/
+*.log
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+*.swp
+*~
