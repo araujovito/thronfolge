@@ -104,10 +104,70 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 
 ## Divisão de trabalho
 
-- Codex: implementação, arquitetura, testes, ferramentas e integração.
-- Claude: pesquisa histórica, genealogia, escrita e revisão narrativa.
-- Ambos podem revisar o outro quando solicitado; `RECADOS.md` contém os
-  handoffs e conflitos ainda não incorporados aqui.
+### Vitor — direção do projeto
+
+- Define a visão do jogo, prioridades, escopo e experiência desejada.
+- Decide questões criativas ou de design que admitam mais de uma solução boa.
+- Aprova mudanças de premissa, tecnologia, marco ou divisão de trabalho.
+- Dá a palavra final quando fidelidade histórica e jogabilidade entram em
+  conflito.
+
+### Codex — produção técnica e design de sistemas
+
+- Converte a visão e o plano em regras de jogo implementáveis.
+- Mantém arquitetura, código, interface, testes, saves e ferramentas.
+- Integra ao jogo os dados e textos entregues pelo Claude.
+- Faz balanceamento, simulações em lote, diagnóstico de erros e revisão visual.
+- Pode ajustar redação apenas para encaixe técnico, clareza ou consistência,
+  sem inventar fatos históricos; mudanças de sentido voltam ao Claude.
+- Não apresenta como histórico um elemento que o Claude marcou como incerto,
+  liberdade de design ou anacronismo.
+- Não delega ao Claude programação, depuração, arquitetura ou balanceamento.
+
+### Claude — design político-narrativo, pesquisa e crítica
+
+- Transforma objetivos abstratos como ambição, lealdade, medo, dívida e honra em
+  situações políticas compreensíveis, escolhas difíceis e consequências.
+- Desenha propostas de eventos, dilemas, contrapartidas, compromissos, rupturas
+  e reações de personagens para os sistemas previstos no marco atual.
+- Especifica conteúdo de jogo em formato estruturado: condições de entrada,
+  opções, efeitos pretendidos, informação disponível e justificativa do agente.
+- Faz crítica de design antes da implementação: procura escolhas óbvias, ações
+  sem custo, estratégias dominantes, personagens sem função e regras que não
+  produzam histórias interessantes.
+- Faz testes de mesa e revisa transcrições de campanhas ou resultados de
+  simulações, apontando padrões artificiais e propondo hipóteses de correção.
+- Revisa se as decisões dos agentes são coerentes com suas memórias,
+  percepções, interesses e conhecimento limitado.
+- Planeja a experiência narrativa da campanha: ritmo, escalada, variedade,
+  clareza das consequências e cadeia de acontecimentos do relatório final.
+- Escreve e revisa textos de interface, acontecimentos, explicações de decisões
+  e encerramentos, mantendo voz e terminologia consistentes.
+- Pesquisa os fatos necessários aos sistemas em produção e mantém fontes, graus
+  de certeza e distinção entre fato, inferência e liberdade de design.
+- Revisa nomes, datas, parentescos, títulos, cerimônias e vocabulário de época.
+- Pode propor regras e parâmetros, mas os entrega como hipóteses justificadas;
+  Codex verifica viabilidade, implementa e mede o balanceamento.
+- Não altera código executável, não declara balanceamento sem evidência de jogo
+  e não amplia pesquisa ou conteúdo para partes ainda fora do plano.
+
+### Passagem de trabalho
+
+1. Codex identifica a menor dúvida histórica que bloqueia uma regra e a registra
+   em `RECADOS.md`, com contexto, formato esperado e decisão necessária.
+2. Claude responde com pesquisa, crítica ou especificação de conteúdo no arquivo
+   apropriado; quando houver história, cita fontes e marca claramente certeza,
+   inferência e liberdade de design.
+3. Codex valida a entrega contra o sistema, resolve limites técnicos, implementa,
+   testa, mede e registra qualquer simplificação adotada.
+4. Claude revisa o resultado integrado como experiência política, narrativa e
+   histórica; Codex corrige os efeitos técnicos e mede as hipóteses de ajuste.
+5. Divergências que mudem escopo, diversão ou premissa são apresentadas a Vitor
+   como opções curtas. Nenhum dos dois presume a decisão.
+
+`RECADOS.md` é usado somente para entregas e pendências entre os agentes.
+Decisões permanentes são incorporadas neste arquivo, e tarefas ficam em
+`plano_de_acao.md`.
 
 ## Decisões em aberto
 

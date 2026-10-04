@@ -26,7 +26,23 @@ não apenas acrescentar sistemas.
 - Poder vem de territórios, ouro e soldados; legitimidade não é poder.
 - Nenhuma ação altera o estado sem validar custo, alcance e conhecimento.
 - Sistemas novos precisam de teste e de uma função visível na campanha.
-- Codex implementa e testa; Claude pesquisa e revisa conteúdo histórico.
+- Codex implementa, testa e mede; Claude projeta conteúdo político-narrativo,
+  pesquisa e critica a experiência resultante.
+
+## Responsabilidade por entrega
+
+- Uma tarefa de **Codex** termina com código integrado, testes proporcionais ao
+  risco e efeito verificável na campanha.
+- Uma tarefa de **Claude** termina com uma pesquisa, crítica ou especificação
+  acionável no arquivo adequado. Conteúdo histórico inclui fontes e indicação
+  explícita do que é fato, inferência ou liberdade de design; conteúdo de jogo
+  inclui condições, opções, efeitos pretendidos e informação disponível.
+- Pesquisa só começa quando atende uma necessidade do marco atual ou do próximo.
+- Claude não altera código executável nem declara balanceamento sem evidência;
+  Codex não inventa conteúdo histórico e mede as hipóteses de design recebidas.
+- Mudança de escopo, premissa ou prioridade depende de decisão de Vitor.
+- O protocolo completo de passagem e os limites de cada função estão em
+  `contexto.md`.
 
 ## Marco 0 — Consolidar o protótipo atual
 
@@ -97,6 +113,10 @@ mês e consegue alterar deliberadamente uma relação.
   aceitáveis para cinco poderes.
 - [x] Revisar nomes de títulos, reivindicações e cerimônias.
 - [x] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
+- [ ] Definir quais decisões e viradas tornam uma campanha digna do relatório
+  final, com modelos curtos para vitória e falta de consenso.
+- [ ] Revisar campanhas simuladas e apontar decisões incoerentes, pretendentes
+  passivos, resultados sem causa legível e estratégias aparentemente óbvias.
 
 **Concluído quando:** campanhas completas produzem vencedores diferentes por
 razões recuperáveis no histórico, sem evento roteirizado escolher o rei.
@@ -119,6 +139,12 @@ razões recuperáveis no histórico, sem evento roteirizado escolher o rei.
 - [x] Revisar apenas ordens de grandeza necessárias para diferenciar regiões;
   não inventar censos precisos inexistentes.
 - [x] Revisar vocabulário de tributo, hoste, mensageiros e juramentos.
+- [ ] Projetar dilemas que obriguem o jogador a trocar riqueza, mobilização,
+  confiança e segurança, sem transformar recursos em bônus abstratos.
+- [ ] Especificar exemplos de notícia, atraso, rumor e descoberta com origem,
+  alcance, conteúdo percebido e possível consequência política.
+- [ ] Testar em mesa se personagens com informações diferentes chegam a
+  decisões diferentes por razões compreensíveis.
 
 **Concluído quando:** possuir mais território ajuda, mas não garante a coroa, e
 personagens podem tomar decisões diferentes por conhecerem versões diferentes
@@ -138,6 +164,10 @@ da mesma situação.
 
 - [ ] Revisar práticas plausíveis de negociação e conflito no século X.
 - [ ] Escrever mensagens curtas para ultimatos, rendições e acordos.
+- [ ] Projetar contrapartidas, compromissos, reféns, garantias e mudanças de lado
+  como dilemas estruturados, indicando condições e efeitos pretendidos.
+- [ ] Revisar se guerra permanece continuação da política e se há saídas
+  narrativamente satisfatórias além de vencer pela força.
 
 **Concluído quando:** uma guerra muda a disputa política sem substituir todo o
 jogo por comparação de números militares.
@@ -152,6 +182,10 @@ Só começar se a campanha política dos marcos anteriores já for divertida.
 - [ ] Permitir campanhas maiores apenas depois de validar o recorte de 936.
 - [ ] Pedir ao Claude novos personagens por necessidade do sistema, em pequenos
   conjuntos com fontes, nunca uma enciclopédia antecipada.
+- [ ] Claude desenha dilemas familiares apenas para relações que alterem poder,
+  sucessão, confiança ou compromissos da campanha.
+- [ ] Claude revisa se parentes agem como agentes políticos, não como bônus ou
+  entradas de catálogo genealógico.
 
 ## Marco 6 — Apresentação e distribuição
 
@@ -164,6 +198,8 @@ Só começar se a campanha política dos marcos anteriores já for divertida.
 - [ ] Avaliar empacotamento para desktop somente depois da campanha completa.
 - [ ] Avaliar modelo local apenas contra uma versão determinística já medida;
   rejeitá-lo se não melhorar decisões de forma perceptível.
+- [ ] Claude revisa ritmo, clareza das causas, variedade dos relatos e força dos
+  encerramentos a partir de campanhas completas.
 
 ## Fora do escopo atual
 
