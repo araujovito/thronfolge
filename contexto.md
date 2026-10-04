@@ -45,8 +45,10 @@ Fontes iniciais consultadas:
 - Edite: esposa de Otto.
 - Liudolfo e Liutgarda: filhos de Otto e Edite.
 
-Datas, grafias alternativas e títulos exatos ainda serão registrados em dados
-estruturados com fontes antes da implementação dos personagens.
+Datas, grafias, títulos e fontes estão em
+`dados/historico/personagens_936.json`, que também inclui Guilherme (filho
+ilegítimo de Otto, n. 929) e os duques de 936. Em julho de 936 Edviges e
+Henrique ainda são solteiros (casamentos em 937 e 936/37).
 
 ## Regras de simulação confirmadas
 
@@ -59,6 +61,17 @@ estruturados com fontes antes da implementação dos personagens.
 - O motor do jogo valida recursos, alcance, conhecimento e legalidade de toda
   ação. Um eventual LLM nunca altera diretamente o estado do mundo.
 - A primeira versão deve funcionar sem serviços pagos e sem IA generativa.
+- **Poder e legitimidade são separados** (Vitor, 2026-10-03):
+  - poder não é um atributo que se treina: é calculado de coisas concretas
+    (regiões controladas, soldados, ouro);
+  - o poder serve à força: quanto ouro se tira de uma região, quantos
+    soldados se convocam, o peso de uma ameaça;
+  - convencer depende da legitimidade e das memórias que o alvo tem de quem
+    pede, não do poder;
+  - cada personagem reage ao poder que acredita que o outro tem, não ao
+    verdadeiro.
+  Em aberto: o freio contra a bola de neve (poder → ouro e soldados → mais
+  poder) e o que substitui a ação "fortalecer".
 
 ## Estratégia de custo
 
@@ -69,6 +82,15 @@ estruturados com fontes antes da implementação dos personagens.
   jogável e apenas se ele melhorar decisões ou diálogos de maneira mensurável.
 - Manter documentação enxuta para não repetir contexto a cada sessão.
 
+## Tecnologia
+
+- O primeiro protótipo usa HTML, CSS e JavaScript sem bibliotecas externas.
+- A simulação não depende da interface e é testada pelo executor nativo do
+  Node.js.
+- Motivo: o ambiente atual já possui Node, não possui Godot, e um mapa político
+  estático não justifica instalar um motor antes de validar o núcleo do jogo.
+- A escolha vale para o protótipo, não impede empacotamento ou migração futura.
+
 ## Divisão de trabalho
 
 - Codex: implementação, arquitetura, testes, ferramentas e integração.
@@ -78,7 +100,6 @@ estruturados com fontes antes da implementação dos personagens.
 
 ## Decisões em aberto
 
-- Tecnologia do jogo; Godot é candidato, mas ainda não foi confirmado.
 - Tamanho e divisão do mapa inicial.
 - Casas e personagens jogáveis além dos Liudolfingas.
 - Condições de vitória e duração média da campanha.
@@ -86,4 +107,6 @@ estruturados com fontes antes da implementação dos personagens.
 
 ## Estado atual
 
-Repositório e protocolo de colaboração criados. Ainda não há código do jogo.
+Etapa 2 iniciada: o navegador mostra um mapa esquemático dos cinco ducados,
+permite trocar de perspectiva, avançar meses e salvar localmente. A interface
+usa os nomes históricos revisados, mas o desenho das fronteiras é provisório.
