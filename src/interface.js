@@ -1,6 +1,7 @@
 import { carregarCenario936 } from "./cenario_936.js";
 import { dataDoTurno, descreverEvento } from "./apresentacao.js";
 import {
+  apoiosDe,
   calcularPoder,
   criarEstado,
   memoriasSobre,
@@ -31,7 +32,9 @@ function renderizarMapa() {
     botao.dataset.id = regiao.id;
     botao.setAttribute("aria-pressed", String(governante.id === alvoId));
     const voce = governante.id === jogadorId ? " · você" : "";
-    botao.innerHTML = `<strong>${regiao.nome}</strong><small>${governante.nome}${voce}</small>`;
+    const apoiado = estado.apoios?.[governante.id];
+    const apoio = apoiado && apoiado !== governante.id ? ` · apoia ${nome(apoiado)}` : "";
+    botao.innerHTML = `<strong>${regiao.nome}</strong><small>${governante.nome}${voce}${apoio}</small>`;
     botao.addEventListener("click", () => {
       if (governante.id === jogadorId) return;
       alvoId = governante.id;
@@ -47,8 +50,13 @@ function renderizarPersonagem() {
   const poder = calcularPoder(estado, id);
   document.querySelector("#nome-personagem").textContent = pessoa.nome;
   document.querySelector("#titulo-personagem").textContent = pessoa.titulo;
+  const fundamento = document.querySelector("#fundamento-legitimidade");
+  fundamento.textContent = pessoa.argumento_legitimidade
+    ? `Direito alegado: ${pessoa.argumento_legitimidade}`
+    : "Não há reivindicação documentada nas fontes consultadas.";
   document.querySelector("#legitimidade").textContent = pessoa.legitimidade;
   document.querySelector("#territorios").textContent = poder.territorios;
+  document.querySelector("#apoios").textContent = apoiosDe(estado, id).length;
   document.querySelector("#total-memorias").textContent = pessoa.memoria.length;
 
   const relacoes = document.querySelector("#relacoes");
@@ -104,13 +112,21 @@ function acaoAtual() {
 function atualizarPrevisao() {
   if (!jogadorId) return;
   const textos = {
-    conversar: "Uma conversa privada pode aumentar a confiança entre os dois personagens.",
-    oferecer_acordo: "A resposta dependerá da confiança, do rancor e da legitimidade que o alvo percebe.",
-    difamar: "A acusação será pública, reduzirá a legitimidade do alvo e poderá criar rancor.",
-    aguardar: "Você não realizará ação política neste mês.",
+    conversar: "Uma conversa a sós pode aproximar os dois.",
+    propor_amizade: "Aceita quem confia em você e reconhece o seu direito.",
+    pedir_apoio: "O alvo pesa a confiança, o rancor e o direito que vê em você.",
+    difamar: "A contestação é pública: enfraquece o alvo e cria rancor.",
+    aguardar: "Nenhuma ação política neste mês.",
   };
   const acao = acaoAtual();
   const validacao = validarAcao(estado, acao);
+  if (estado.encerrado) {
+    document.querySelector("#previsao-acao").textContent = estado.eleito
+      ? `${nome(estado.eleito)} foi feito rei. A escolha terminou.`
+      : "A campanha terminou sem consenso entre os grandes.";
+    document.querySelector("#confirmar-acao").disabled = true;
+    return;
+  }
   document.querySelector("#previsao-acao").textContent = validacao.valida
     ? textos[acao.tipo]
     : validacao.motivo;
@@ -127,7 +143,9 @@ function renderizarAcoes() {
     opcao.selected = pessoa.id === alvoId;
     seletor.append(opcao);
   }
-  seletor.disabled = document.querySelector("#acao").value === "aguardar";
+  seletor.disabled = estado.encerrado
+    || document.querySelector("#acao").value === "aguardar";
+  document.querySelector("#acao").disabled = Boolean(estado.encerrado);
   atualizarPrevisao();
 }
 

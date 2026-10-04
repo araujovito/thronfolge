@@ -10,6 +10,8 @@ export function criarEstado(configuracao) {
   const estado = copiar(configuracao);
   estado.turno ??= 0;
   estado.eventos ??= [];
+  estado.eleito ??= null;
+  estado.encerrado ??= null;
 
   exigir(Array.isArray(estado.personagens), "personagens deve ser uma lista");
   exigir(estado.personagens.length > 1, "a simulação requer ao menos duas pessoas");
@@ -135,6 +137,34 @@ export function calcularPoder(estado, pessoaId) {
   };
 }
 
+export function apoiosDe(estado, pretendenteId) {
+  personagem(estado, pretendenteId);
+  return Object.entries(estado.apoios ?? {})
+    .filter(([, apoiado]) => apoiado === pretendenteId)
+    .map(([apoiador]) => apoiador);
+}
+
+export function pontuacaoParaApoio(estado, apoiadorId, pretendenteId) {
+  const relacao = relacaoCom(estado, apoiadorId, pretendenteId);
+  const percepcao = percepcaoDe(estado, apoiadorId, pretendenteId);
+  return percepcao.legitimidade + relacao.confianca - relacao.rancor;
+}
+
+function alvoParaApoio(estado, ator) {
+  const indiceAtor = estado.personagens.findIndex((pessoa) => pessoa.id === ator.id);
+  const total = estado.personagens.length;
+  return estado.personagens
+    .filter((candidato) => candidato.id !== ator.id && estado.apoios[candidato.id] !== ator.id)
+    .map((candidato) => ({
+      candidato,
+      pontuacao: pontuacaoParaApoio(estado, candidato.id, ator.id),
+      distancia: (estado.personagens.findIndex((pessoa) => pessoa.id === candidato.id)
+        - indiceAtor + total) % total,
+    }))
+    .sort((a, b) => b.pontuacao - a.pontuacao
+      || a.distancia - b.distancia)[0] ?? null;
+}
+
 function escolherAlvo(estado, ator) {
   return estado.personagens
     .filter((candidato) => candidato.id !== ator.id)
@@ -152,6 +182,7 @@ function escolherAlvo(estado, ator) {
 
 export function decidirAcao(estado, atorId) {
   const ator = personagem(estado, atorId);
+  if (estado.encerrado) return { tipo: "aguardar", autor: ator.id };
   const alvo = escolherAlvo(estado, ator);
   const relacao = relacaoCom(estado, ator.id, alvo.id);
   const percepcao = percepcaoDe(estado, ator.id, alvo.id);
@@ -164,14 +195,25 @@ export function decidirAcao(estado, atorId) {
   const desejoDeDifamar = ator.ambicao + relacao.rancor
     - relacao.confianca - desgastePolitico;
 
-  if (desejoDeDifamar >= 80 && percepcao.legitimidade > 0) {
+  if (desejoDeDifamar >= 100 && percepcao.legitimidade > 0) {
     return { tipo: "difamar", autor: ator.id, alvo: alvo.id };
+  }
+  if (estado.apoios) {
+    const oportunidade = alvoParaApoio(estado, ator);
+    if (oportunidade?.pontuacao >= 70) {
+      return { tipo: "pedir_apoio", autor: ator.id, alvo: oportunidade.candidato.id };
+    }
+    if (oportunidade) {
+      return { tipo: "conversar", autor: ator.id, alvo: oportunidade.candidato.id };
+    }
   }
   return { tipo: "aguardar", autor: ator.id };
 }
 
 export function validarAcao(estado, acao) {
-  const tipos = new Set(["aguardar", "conversar", "oferecer_acordo", "difamar"]);
+  const tipos = new Set(["aguardar", "conversar", "propor_amizade", "difamar",
+    "pedir_apoio"]);
+  if (estado.encerrado) return { valida: false, motivo: "a escolha do rei já terminou" };
   if (!tipos.has(acao.tipo)) return { valida: false, motivo: "ação desconhecida" };
   try {
     personagem(estado, acao.autor);
@@ -187,6 +229,12 @@ export function validarAcao(estado, acao) {
   }
   if (acao.autor === acao.alvo) {
     return { valida: false, motivo: "o personagem não pode ser o próprio alvo" };
+  }
+  if (acao.tipo === "pedir_apoio" && !estado.apoios) {
+    return { valida: false, motivo: "o sistema de apoio não está ativo" };
+  }
+  if (acao.tipo === "pedir_apoio" && estado.apoios[acao.alvo] === acao.autor) {
+    return { valida: false, motivo: "esse personagem já declarou apoio" };
   }
   return { valida: true, motivo: "" };
 }
@@ -209,17 +257,32 @@ export function executarAcao(estado, acao) {
     });
   }
 
-  if (acao.tipo === "oferecer_acordo") {
+  if (acao.tipo === "propor_amizade") {
     const relacao = relacaoCom(estado, acao.alvo, autor.id);
     const percepcao = percepcaoDe(estado, acao.alvo, autor.id);
     const aceita = relacao.confianca - relacao.rancor + percepcao.legitimidade >= 40;
     return registrarEvento(estado, {
-      tipo: aceita ? "acordo_aceito" : "acordo_recusado",
+      tipo: aceita ? "amizade_aceita" : "amizade_recusada",
       autor: autor.id,
       alvo: acao.alvo,
       impactos: aceita ? {
         [autor.id]: { [acao.alvo]: { confianca: 15 } },
         [acao.alvo]: { [autor.id]: { confianca: 15 } },
+      } : {},
+    });
+  }
+
+  if (acao.tipo === "pedir_apoio") {
+    const aceita = pontuacaoParaApoio(estado, acao.alvo, autor.id) >= 70;
+    if (aceita) estado.apoios[acao.alvo] = autor.id;
+    return registrarEvento(estado, {
+      tipo: aceita ? "apoio_concedido" : "apoio_recusado",
+      autor: autor.id,
+      alvo: acao.alvo,
+      publico: aceita,
+      impactos: aceita ? {
+        [autor.id]: { [acao.alvo]: { confianca: 10 } },
+        [acao.alvo]: { [autor.id]: { confianca: 10 } },
       } : {},
     });
   }
@@ -248,6 +311,7 @@ export function avancarTurno(estado) {
 }
 
 export function resolverTurno(estado, acaoJogador = null, jogadorId = null) {
+  exigir(!estado.encerrado, "a escolha do rei já terminou");
   if (acaoJogador) {
     exigir(acaoJogador.autor === jogadorId, "a ação não pertence ao jogador");
     const validacao = validarAcao(estado, acaoJogador);
@@ -266,6 +330,28 @@ export function resolverTurno(estado, acaoJogador = null, jogadorId = null) {
   for (const decisao of decisoes) {
     const evento = executarAcao(estado, decisao);
     if (evento) eventos.push(evento);
+  }
+  if (!estado.eleito && estado.apoios) {
+    const vencedor = estado.personagens
+      .map((pessoa) => ({ pessoa, total: apoiosDe(estado, pessoa.id).length }))
+      .filter((item) => item.total >= 3)
+      .sort((a, b) => b.total - a.total || a.pessoa.id.localeCompare(b.pessoa.id))[0];
+    if (vencedor) {
+      estado.eleito = vencedor.pessoa.id;
+      estado.encerrado = "rei_eleito";
+      eventos.push(registrarEvento(estado, {
+        tipo: "eleicao_regia",
+        alvo: vencedor.pessoa.id,
+        publico: true,
+      }));
+    }
+  }
+  if (!estado.encerrado && estado.turno >= 24) {
+    estado.encerrado = "sem_consenso";
+    eventos.push(registrarEvento(estado, {
+      tipo: "fim_sem_consenso",
+      publico: true,
+    }));
   }
   return eventos;
 }

@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   avancarTurno,
+  apoiosDe,
   calcularPoder,
   conheceEvento,
   criarEstado,
@@ -92,7 +93,7 @@ test("rancor conhecido altera a decisão, sem acesso a fatos globais", () => {
 test("decisão usa legitimidade percebida, não o valor verdadeiro do rival", () => {
   const estado = criarEstado({
     personagens: [
-      { id: "a", ambicao: 90, legitimidade: 10 },
+      { id: "a", ambicao: 100, legitimidade: 10 },
       { id: "b", ambicao: 10, legitimidade: 100 },
     ],
   });
@@ -212,21 +213,75 @@ test("conversa cria memórias diferentes para os dois participantes", () => {
   assert.equal(estado.personagens.find((pessoa) => pessoa.id === "leste").memoria.length, 0);
 });
 
-test("acordo depende da percepção e da relação do alvo", () => {
+test("amizade depende da percepção e da relação do alvo", () => {
   const estado = mundo();
   estado.personagens.find((pessoa) => pessoa.id === "sul").percepcoes.norte = {
     legitimidade: 45,
   };
   const aceito = executarAcao(estado, {
-    tipo: "oferecer_acordo", autor: "norte", alvo: "sul",
+    tipo: "propor_amizade", autor: "norte", alvo: "sul",
   });
-  assert.equal(aceito.tipo, "acordo_aceito");
+  assert.equal(aceito.tipo, "amizade_aceita");
 
   const outro = mundo();
   const recusado = executarAcao(outro, {
-    tipo: "oferecer_acordo", autor: "norte", alvo: "sul",
+    tipo: "propor_amizade", autor: "norte", alvo: "sul",
   });
-  assert.equal(recusado.tipo, "acordo_recusado");
+  assert.equal(recusado.tipo, "amizade_recusada");
+});
+
+test("apoio é concedido pela percepção do apoiador e pode mudar", () => {
+  const estado = criarEstado({
+    personagens: [
+      { id: "a", legitimidade: 60 },
+      { id: "b", percepcoes: { a: { legitimidade: 60 } } },
+      { id: "c" },
+    ],
+    apoios: { a: "a", b: "b", c: "c" },
+  });
+  executarAcao(estado, { tipo: "conversar", autor: "a", alvo: "b" });
+  executarAcao(estado, { tipo: "conversar", autor: "a", alvo: "b" });
+  const evento = executarAcao(estado, { tipo: "pedir_apoio", autor: "a", alvo: "b" });
+
+  assert.equal(evento.tipo, "apoio_concedido");
+  assert.deepEqual(apoiosDe(estado, "a"), ["a", "b"]);
+});
+
+test("três apoios fazem o pretendente rei ao final do turno", () => {
+  const estado = criarEstado({
+    personagens: [
+      { id: "a", legitimidade: 70 },
+      { id: "b", percepcoes: { a: { legitimidade: 70 } } },
+      { id: "c" },
+    ],
+    apoios: { a: "a", b: "b", c: "a" },
+  });
+  const eventos = resolverTurno(
+    estado,
+    { tipo: "pedir_apoio", autor: "a", alvo: "b" },
+    "a",
+  );
+
+  assert.equal(estado.eleito, "a");
+  assert.equal(estado.encerrado, "rei_eleito");
+  assert.equal(eventos.at(-1).tipo, "eleicao_regia");
+  assert.equal(conheceEvento(estado, "c", eventos.at(-1).id), true);
+});
+
+test("campanha termina sem consenso após vinte e quatro meses", () => {
+  const estado = criarEstado({
+    personagens: [{ id: "a" }, { id: "b" }],
+    apoios: { a: "a", b: "b" },
+  });
+  for (let turno = 0; turno < 24; turno += 1) {
+    resolverTurno(estado, { tipo: "aguardar", autor: "a" }, "a");
+  }
+  assert.equal(estado.encerrado, "sem_consenso");
+  assert.equal(estado.eventos.at(-1).tipo, "fim_sem_consenso");
+  assert.deepEqual(
+    validarAcao(estado, { tipo: "aguardar", autor: "a" }),
+    { valida: false, motivo: "a escolha do rei já terminou" },
+  );
 });
 
 test("turno do jogador não deixa a IA decidir por ele", () => {

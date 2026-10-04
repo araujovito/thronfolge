@@ -61,6 +61,17 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 - O motor do jogo valida recursos, alcance, conhecimento e legalidade de toda
   ação. Um eventual LLM nunca altera diretamente o estado do mundo.
 - A primeira versão deve funcionar sem serviços pagos e sem IA generativa.
+- A escolha régia busca consenso, mas o jogo usa uma simplificação declarada:
+  três dos cinco grandes podem fazer alguém rei. Quem não aderiu permanece como
+  pendência de reconhecimento para sistemas futuros. Não chamar isso de voto
+  ou maioria na interface.
+- Cada grande começa apoiando a si mesmo. Confiança, rancor e legitimidade
+  percebida determinam se transfere o apoio a outro pretendente.
+- A campanha inicial termina quando alguém reúne três apoios ou após 24 meses
+  sem consenso.
+- Siegfried permanece na base histórica, mas não é um sexto apoio no primeiro
+  cenário. Otto representar o poder saxão é uma simplificação declarada; incluir
+  Siegfried agora quebraria o recorte testado de cinco poderes.
 - **Poder e legitimidade são separados** (Vitor, 2026-10-03):
   - poder não é um atributo que se treina: é calculado de coisas concretas
     (regiões controladas, soldados, ouro);
@@ -121,6 +132,7 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 ## Estado atual
 
 O primeiro ciclo jogável existe: o jogador escolhe um dos cinco governantes e,
-a cada mês, pode conversar, oferecer um acordo, difamar ou aguardar; depois os
-outros agentes resolvem suas ações. O mapa continua esquemático e ainda falta
-inspeção visual num ambiente com navegador.
+a cada mês, pode conversar, propor amizade, pedir apoio, contestar um rival ou
+aguardar; depois os outros agentes resolvem suas ações. Três apoios fazem um
+pretendente rei. O mapa continua esquemático e ainda falta inspeção visual num
+ambiente com navegador.

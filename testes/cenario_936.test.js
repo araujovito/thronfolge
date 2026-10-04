@@ -5,6 +5,7 @@ import test from "node:test";
 import { criarCenario936 } from "../src/cenario_936.js";
 
 const caminho = new URL("../dados/historico/personagens_936.json", import.meta.url);
+const caminhoEscolha = new URL("../dados/historico/escolha_regia_936.json", import.meta.url);
 
 test("cenário usa os cinco governantes históricos revisados", async () => {
   const dados = JSON.parse(await readFile(caminho, "utf8"));
@@ -26,3 +27,14 @@ test("dados de jogo não alteram o arquivo histórico", async () => {
   assert.deepEqual(dados, antes);
 });
 
+test("pretendentes recebem argumentos históricos sem transformá-los em roteiro", async () => {
+  const dados = JSON.parse(await readFile(caminho, "utf8"));
+  const escolha = JSON.parse(await readFile(caminhoEscolha, "utf8"));
+  const estado = criarCenario936(dados, escolha);
+
+  const otto = estado.personagens.find((pessoa) => pessoa.id === "otto");
+  const giselberto = estado.personagens.find((pessoa) => pessoa.id === "giselberto");
+  assert.match(otto.argumento_legitimidade, /Designado pelo pai/);
+  assert.match(giselberto.argumento_legitimidade, /Nenhuma reivindicação/);
+  assert.equal(estado.eleito, null);
+});

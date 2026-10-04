@@ -38,3 +38,5 @@ navegador carrega os dados históricos em JSON. Nenhuma conexão externa é feit
 O núcleo de acontecimentos, conhecimento individual, memórias e relações está
 implementado. O jogador escolhe um governante, toma uma ação política por mês e
 acompanha as reações dos outros agentes num mapa esquemático dos cinco ducados.
+Três apoios permitem que os grandes façam alguém rei; sem consenso, a campanha
+termina após 24 meses.

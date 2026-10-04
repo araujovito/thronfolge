@@ -19,6 +19,14 @@ test("descrições conhecidas usam os nomes exibidos", () => {
     { tipo: "conversa", autor: "a", alvo: "b" },
     (id) => ({ a: "Otto", b: "Arnulfo" })[id],
   );
-  assert.equal(texto, "Otto conversou em particular com Arnulfo.");
+  assert.equal(texto, "Otto conversou a sós com Arnulfo.");
 });
 
+test("eleição usa a linguagem histórica sem falar em maioria ou votos", () => {
+  const texto = descreverEvento(
+    { tipo: "eleicao_regia", alvo: "otto" },
+    () => "Otto",
+  );
+  assert.equal(texto, "Os grandes fizeram Otto rei e juraram-lhe fidelidade.");
+  assert.doesNotMatch(texto, /maioria|vot/i);
+});

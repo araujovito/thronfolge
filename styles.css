@@ -123,6 +123,7 @@ select {
 .regiao[data-id="baviera"] { left: 57%; top: 59%; background: #6f465b; }
 
 .titulo-personagem { color: var(--muted); min-height: 2.5rem; }
+.fundamento-legitimidade { padding: 0.65rem; border-left: 3px solid var(--ouro); color: var(--muted); font: 0.75rem/1.45 system-ui, sans-serif; }
 .atributos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
 .atributos div { padding: 0.65rem; border: 1px solid var(--linha); background: var(--painel-claro); }
 .atributos dt { color: var(--muted); font: 0.7rem system-ui, sans-serif; }

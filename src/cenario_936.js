@@ -8,7 +8,7 @@ const GOVERNANTES_JOGAVEIS = {
   lotaringia: "giselberto",
 };
 
-export function criarCenario936(dadosHistoricos) {
+export function criarCenario936(dadosHistoricos, dadosEscolha = {}) {
   const porId = Object.fromEntries(
     dadosHistoricos.personagens.map((pessoa) => [pessoa.id, pessoa]),
   );
@@ -32,6 +32,7 @@ export function criarCenario936(dadosHistoricos) {
       nome: historico.nome,
       nome_historico: historico.nome_historico,
       titulo: historico.titulos_em_936[0] ?? "nobre",
+      argumento_legitimidade: dadosEscolha.argumentos_de_legitimidade?.[id]?.argumento ?? null,
       ambicao: 80,
       legitimidade: id === "otto" ? 60 : 45,
       percepcoes,
@@ -45,6 +46,7 @@ export function criarCenario936(dadosHistoricos) {
     data_inicial: [936, 7, 2],
     personagens,
     regioes,
+    apoios: Object.fromEntries(ids.map((id) => [id, id])),
   });
   registrarEvento(estado, {
     tipo: "morte_do_rei",
@@ -54,9 +56,16 @@ export function criarCenario936(dadosHistoricos) {
   return estado;
 }
 
-export async function carregarCenario936(caminho = "./dados/historico/personagens_936.json") {
-  const resposta = await fetch(caminho);
-  if (!resposta.ok) throw new Error(`não foi possível carregar o cenário (${resposta.status})`);
-  return criarCenario936(await resposta.json());
+export async function carregarCenario936(
+  caminhoPessoas = "./dados/historico/personagens_936.json",
+  caminhoEscolha = "./dados/historico/escolha_regia_936.json",
+) {
+  const [respostaPessoas, respostaEscolha] = await Promise.all([
+    fetch(caminhoPessoas),
+    fetch(caminhoEscolha),
+  ]);
+  if (!respostaPessoas.ok || !respostaEscolha.ok) {
+    throw new Error("não foi possível carregar os dados históricos do cenário");
+  }
+  return criarCenario936(await respostaPessoas.json(), await respostaEscolha.json());
 }
-

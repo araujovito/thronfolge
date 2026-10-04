@@ -10,11 +10,14 @@ export function dataDoTurno(turno) {
 export function descreverEvento(evento, nome) {
   const nomes = {
     morte_do_rei: () => "Henrique I morreu em Memleben. Designou Otto como sucessor, mas os grandes ainda não o elegeram.",
-    difamacao: () => `${nome(evento.autor)} atacou publicamente a legitimidade de ${nome(evento.alvo)}.`,
-    conversa: () => `${nome(evento.autor)} conversou em particular com ${nome(evento.alvo)}.`,
-    acordo_aceito: () => `${nome(evento.alvo)} aceitou um acordo proposto por ${nome(evento.autor)}.`,
-    acordo_recusado: () => `${nome(evento.alvo)} recusou um acordo proposto por ${nome(evento.autor)}.`,
+    difamacao: () => `${nome(evento.autor)} contestou publicamente o direito de ${nome(evento.alvo)}.`,
+    conversa: () => `${nome(evento.autor)} conversou a sós com ${nome(evento.alvo)}.`,
+    amizade_aceita: () => `${nome(evento.alvo)} aceitou a amizade de ${nome(evento.autor)}.`,
+    amizade_recusada: () => `${nome(evento.alvo)} recusou a amizade de ${nome(evento.autor)}.`,
+    apoio_concedido: () => `${nome(evento.alvo)} jurou apoiar ${nome(evento.autor)} na escolha régia.`,
+    apoio_recusado: () => `${nome(evento.alvo)} recusou apoiar ${nome(evento.autor)}.`,
+    eleicao_regia: () => `Os grandes fizeram ${nome(evento.alvo)} rei e juraram-lhe fidelidade.`,
+    fim_sem_consenso: () => "Os grandes não chegaram a um consenso antes do fim da campanha.",
   };
   return nomes[evento.tipo]?.() ?? null;
 }
-

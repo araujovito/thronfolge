@@ -80,7 +80,8 @@ mês e consegue alterar deliberadamente uma relação.
 
 **Codex**
 
-- [ ] Criar reivindicações e legitimidade explicadas por causas concretas.
+- [x] Exibir reivindicações e legitimidade explicadas por argumentos históricos
+  concretos, sem obrigar o resultado real.
 - [x] Criar apoio político direcionado: cada grande apoia alguém ou ninguém.
 - [ ] Implementar promessa, dívida e quebra de compromisso.
 - [x] Fazer os grandes escolherem o rei quando houver três apoios, marcando a
