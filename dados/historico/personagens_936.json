@@ -26,7 +26,8 @@
     "db_hermano_suabia": "https://www.deutsche-biographie.de/sfz70121.html",
     "db_hermano_billung": "https://www.deutsche-biographie.de/sfz30085.html",
     "db_gero": "https://www.deutsche-biographie.de/sfz20693.html",
-    "henry_project_edviges": "https://fasg.org/projects/henryproject/data/hedwi001.htm"
+    "henry_project_edviges": "https://fasg.org/projects/henryproject/data/hedwi001.htm",
+    "widukind_schottin": "https://www.wagner-b.de/PDF/Die_Chronik_Widukinds.pdf"
   },
   "personagens": [
     {
@@ -273,6 +274,19 @@
       "notas": "Nobre saxão. O comando militar contra os redários vem só no outono de 936, dado por Otto: não é cargo na data inicial. Margrave documentado em 953."
     },
     {
+      "id": "siegfried",
+      "nome": "Siegfried",
+      "nome_historico": "Sigfrid (Siegfried von Merseburg)",
+      "casa": null,
+      "vivo_em_936": true,
+      "morte": { "valor": [937, 12, 3], "local": "Merseburg", "certeza": "aproximado" },
+      "pais": [],
+      "conjuges_em_936": [],
+      "titulos_em_936": ["conde", "lugar-tenente na Saxônia"],
+      "fontes": ["db_gero", "widukind_schottin"],
+      "notas": "Irmão de Gero; pai provável o conde Thietmar, preceptor e homem de confiança de Henrique I (a DB põe interrogação). Primo de Hatheburga, mãe de Thankmar (Widukind II,9). Em 936 tem uma 'legatio' na Saxônia e o condado da fronteira leste (Elba médio e Saale inferior); funda o mosteiro de Gröningen. Widukind (II,2) o chama de 'o segundo depois do rei': administra a Saxônia durante a coroação e tem consigo o jovem Henrique. Morre em 937; Otto dá o posto a Gero e não a Thankmar, que o queria por parentesco, uma das causas da revolta de Thankmar em 938. O dia 3/12 vem de fonte secundária, não conferido na DB."
+    },
+    {
       "id": "gero",
       "nome": "Gero",
       "nome_historico": "Gero",
@@ -283,7 +297,7 @@
       "conjuges_em_936": [],
       "titulos_em_936": [],
       "fontes": ["db_gero"],
-      "notas": "Em 936 quem tem o posto na fronteira leste é o irmão Siegfried (lugar-tenente na Saxônia, †937); Gero o sucede em 937. Siegfried ainda não está nestes dados."
+      "notas": "Em 936 quem tem o posto na fronteira leste é o irmão Siegfried; Gero o sucede em 937."
     }
   ],
   "regioes_936": [
@@ -297,7 +311,6 @@
     "Hatheburga: viva ou não em 936.",
     "Liutgarda: ano de nascimento com fonte.",
     "Arnulfo e Hermano da Suábia: qual cônjuge vigente em julho de 936.",
-    "Siegfried (irmão de Gero): incluir se a fronteira leste entrar no mapa.",
     "Convenção de nomes ainda aberta no contexto.md (Otto ou Otão, Eberhardo ou Eberardo)."
   ]
 }
