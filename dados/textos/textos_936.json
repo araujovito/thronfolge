@@ -49,5 +49,50 @@
     "contrapartida_pedida": "{alvo} aceita, se {autor} lhe der algo em troca.",
     "contrapartida_aceita": "{autor} atendeu ao pedido de {alvo}, e o pacto foi selado.",
     "contrapartida_recusada": "{autor} não atendeu ao pedido de {alvo}, e não houve pacto."
+  },
+  "sucessao": {
+    "eventos": {
+      "apoio_concedido": {
+        "texto": "{alvo} prometeu apoiar {autor} na escolha do rei.",
+        "classificacao": "plausivel",
+        "nota": "Trocar 'jurou' por 'prometeu': em Widukind II,1 o juramento de fidelidade vem na eleição, feito ao rei já escolhido. Antes disso há promessas."
+      },
+      "apoio_recusado": {
+        "texto": "{alvo} recusou-se a apoiar {autor}.",
+        "classificacao": "plausivel"
+      },
+      "eleicao_regia": {
+        "texto": "Os grandes fizeram {alvo} rei e juraram-lhe fidelidade.",
+        "classificacao": "plausivel",
+        "nota": "Já está no código. A regra dos três apoios continua liberdade."
+      },
+      "fim_sem_consenso": {
+        "texto": "Os grandes não chegaram a acordo: o reino segue sem rei reconhecido por todos.",
+        "classificacao": "liberdade",
+        "nota": "Em 936 houve rei em cinco semanas. Um interregno de dois anos é hipótese de jogo."
+      }
+    },
+    "reivindicacoes": {
+      "designacao": { "rotulo": "Designado pelo rei", "texto": "Henrique I o indicou como sucessor.", "classificacao": "plausivel", "quem_em_936": ["otto"] },
+      "filho_de_rei": { "rotulo": "Nascido filho de rei", "texto": "Nasceu quando o pai já era rei.", "classificacao": "plausivel", "quem_em_936": ["henrique"] },
+      "primogenito": { "rotulo": "Primogênito", "texto": "É o filho mais velho do rei, embora de casamento anulado.", "classificacao": "plausivel", "quem_em_936": ["thankmar"] },
+      "sangue_real_anterior": { "rotulo": "Irmão de rei", "texto": "Seu irmão Conrado reinou antes de Henrique.", "classificacao": "plausivel", "quem_em_936": ["eberhardo"] },
+      "titulo_reivindicado": { "rotulo": "Já se disse rei", "texto": "Reivindicou o título de rei em 919.", "classificacao": "plausivel", "quem_em_936": ["arnulfo"], "nota": "O sentido dessa reivindicação é discutido; ver escolha_regia_936.json." },
+      "genro_do_rei": { "rotulo": "Genro do rei", "texto": "Casado com uma filha de Henrique I.", "classificacao": "liberdade", "quem_em_936": ["giselberto"], "nota": "Não há reivindicação de Giselberto nas fontes; o casamento só dá proximidade." },
+      "poder_proprio": { "rotulo": "Duque poderoso", "texto": "Governa um dos grandes povos do reino.", "classificacao": "plausivel", "quem_em_936": ["eberhardo", "arnulfo", "hermano_suabia", "giselberto"], "nota": "Conrado I e Henrique I foram reis sem ligação com a casa real anterior." }
+    },
+    "cerimonias": {
+      "designacao": "designou como sucessor",
+      "eleicao": "fizeram-no rei e juraram-lhe fidelidade",
+      "aclamacao": "o povo aclamou-o com a mão direita erguida",
+      "uncao_e_coroacao": "foi ungido e coroado",
+      "banquete": "os duques serviram-no à mesa"
+    },
+    "aviso_historico": {
+      "titulo": "História até 2 de julho de 936",
+      "texto": "Pessoas, títulos e parentescos seguem as fontes até a morte de Henrique I. Daí em diante, o que acontece depende das decisões de cada personagem, e não da história real.",
+      "texto_curto": "A partir de 2 de julho de 936, a história é sua.",
+      "classificacao": "liberdade"
+    }
   }
 }

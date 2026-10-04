@@ -95,7 +95,7 @@ mês e consegue alterar deliberadamente uma relação.
 - [x] Revisar quem participa da escolha real e quais simplificações são
   aceitáveis para cinco poderes.
 - [x] Revisar nomes de títulos, reivindicações e cerimônias.
-- [ ] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
+- [x] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
 
 **Concluído quando:** campanhas completas produzem vencedores diferentes por
 razões recuperáveis no histórico, sem evento roteirizado escolher o rei.
