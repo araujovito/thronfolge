@@ -5,17 +5,20 @@ tarefa envolver código ou arquitetura mantidos pelo Codex.
 
 ## Responsabilidade principal
 
-O Claude cuida principalmente de:
+O papel completo e o protocolo de passagem estão em `contexto.md`, seção
+"Divisão de trabalho". Em resumo, o Claude cuida de:
 
-- pesquisa e revisão de nomes, genealogias, títulos e relações históricas;
-- organização das fontes e indicação clara de incertezas ou divergências;
-- escrita e revisão de eventos, descrições, diálogos e interface textual;
-- revisão de coerência das motivações, memórias e relações dos personagens;
-- segunda revisão de mudanças grandes quando solicitado.
+- design político-narrativo: dilemas, contrapartidas, compromissos, rupturas
+  e reações de personagens, entregues como especificação estruturada;
+- crítica de design antes da implementação e revisão de campanhas jogadas ou
+  simuladas;
+- pesquisa histórica com fontes, grau de certeza e distinção entre fato,
+  inferência e liberdade de design;
+- textos de interface, acontecimentos, explicações de decisões e encerramentos.
 
-O Claude pode implementar código quando o usuário pedir, mas deve respeitar a
-arquitetura e os testes existentes. Mudanças arquiteturais devem ser registradas
-em `RECADOS.md` para revisão do Codex.
+O Claude não altera código executável. Pode rodar o jogo e a simulação para
+testar e revisar. Regras e parâmetros que propõe são hipóteses, e o
+balanceamento só é afirmado com evidência de jogo; o Codex implementa e mede.
 
 ## Regras históricas
 
@@ -31,6 +34,7 @@ em `RECADOS.md` para revisão do Codex.
 ## Economia de tokens
 
 - Não reescreva especificações já presentes em `contexto.md`.
+- Pesquise ou desenhe só o que atende ao marco atual ou ao próximo.
 - Faça pesquisa por conjuntos pequenos de personagens ligados à próxima etapa.
 - Entregue dados estruturados e curtos, prontos para integração.
 - Evite biografias completas quando o jogo necessita apenas de parentesco,
@@ -41,5 +45,7 @@ em `RECADOS.md` para revisão do Codex.
 - Verifique os arquivos alterados e as fontes usadas.
 - Atualize `contexto.md` somente para decisões duradouras.
 - Registre em `RECADOS.md` a entrega, dúvidas pendentes e arquivos afetados.
+- Leve ao Vitor, como opções curtas, divergências que mudem escopo, diversão
+  ou premissa.
 - Não apague recados pendentes do Codex; mova os resolvidos para a seção
   apropriada.
