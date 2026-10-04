@@ -1,0 +1,104 @@
+{
+  "descricao": "Ordens de grandeza e vocabulário para recursos, ameaça e informação (Marco 3). Só o necessário para diferenciar regiões; os números de exércitos medievais são incertos e não devem virar valores exatos no jogo.",
+  "convencoes": {
+    "certeza": "fato = dito pela fonte citada; inferencia = conclusão minha a partir das fontes; incerto = não conferido; invencao = proposta de design",
+    "aviso": "As duas fontes numéricas são posteriores a 936 (955 e 981). Servem para escala, não para o caso concreto de 936."
+  },
+  "fontes": {
+    "widukind_schottin": "https://www.wagner-b.de/PDF/Die_Chronik_Widukinds.pdf",
+    "indiculus_carleton": "https://carleton-wp-production.s3.amazonaws.com/uploads/sites/83/2019/06/Indiculus_Loricatorum_for_MARS_website.pdf",
+    "db_arnulfo": "https://www.deutsche-biographie.de/sfz52704.html",
+    "db_giselberto": "https://www.deutsche-biographie.de/sfz69915.html",
+    "db_eberhardo": "https://www.deutsche-biographie.de/133573400.html",
+    "db_hermano_suabia": "https://www.deutsche-biographie.de/sfz70121.html",
+    "hls_reginlinde": "https://hls-dhs-dss.ch/de/articles/012896/",
+    "rammelsberg": "https://en.wikipedia.org/wiki/Rammelsberg"
+  },
+  "escala_militar": [
+    {
+      "fato": "Indiculus loricatorum (981): reforço pedido por Otto II para a Itália. Cada bispo, abade ou conde manda ou leva de 10 a 100 cavaleiros com cota de malha; o total é de cerca de 2.000 (1.081 de bispos, 342 de abades, 549 de leigos).",
+      "certeza": "fato",
+      "fontes": ["indiculus_carleton"]
+    },
+    {
+      "fato": "Na lista de 981 não aparece nenhum contingente saxão: só Francônia e Reno, Lotaríngia, Baviera e Suábia.",
+      "certeza": "fato",
+      "fontes": ["indiculus_carleton"],
+      "nota": "Na leitura da tradução; os saxões guardavam a fronteira eslava."
+    },
+    {
+      "fato": "Lechfeld (955): o exército real tinha 'cerca de oito legiões': três bávaras, uma franca, a real, duas suábias e uma boêmia de mil homens. Poucos saxões, ocupados com os eslavos.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"],
+      "nota": "Widukind III,44. Só a legião boêmia tem número."
+    },
+    {
+      "fato": "Se cada legião tivesse perto de mil homens, o maior exército reunido pelo reino ficaria na casa de 8.000. Um ducado sozinho mobilizaria de algumas centenas a uns poucos milhares.",
+      "certeza": "inferencia",
+      "fontes": ["widukind_schottin", "indiculus_carleton"]
+    },
+    {
+      "fato": "Bispos e abades fornecem mais da metade dos cavaleiros de 981.",
+      "certeza": "fato",
+      "fontes": ["indiculus_carleton"],
+      "nota": "No jogo sem clero, isso pesa a favor de quem controla igrejas e mosteiros (ver Arnulfo e Giselberto)."
+    }
+  ],
+  "diferencas_regionais": {
+    "saxonia": {
+      "texto": "Base patrimonial dos liudolfingos. Fronteira com os eslavos: guerra constante e tributos dos povos submetidos. A Boêmia foi feita tributária por Henrique I.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin", "rammelsberg"],
+      "nota": "As minas de prata saxãs só aparecem por volta de 968 (Widukind e Thietmar): não usar em 936."
+    },
+    "baviera": {
+      "texto": "Pelo acordo de 921, Arnulfo tem mão livre em política interna e externa. Usou bens da Igreja (as 'secularizações' que lhe valeram o apelido de 'o Mau').",
+      "certeza": "fato",
+      "fontes": ["db_arnulfo"],
+      "nota": "Na escala de 955, a Baviera deu três das oito legiões: a maior contribuição regional, mas sob outro duque (Henrique)."
+    },
+    "lotaringia": {
+      "texto": "Giselberto é também abade leigo de mosteiros ricos (Maastricht, Echternach, St. Maximin): renda e homens além do ducado.",
+      "certeza": "fato",
+      "fontes": ["db_giselberto"],
+      "nota": "Região de fronteira com a Frância Ocidental, que já tinha mudado de reino; Aachen fica nela."
+    },
+    "francia": {
+      "texto": "Eberhardo herdou os tesouros dos conradinos e os pôs à disposição de Henrique I em 919. A DB anota que ele às vezes aparece só como conde: poder ducal menos firme.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin", "db_eberhardo"]
+    },
+    "suabia": {
+      "texto": "Hermano chegou ao ducado pelo casamento com Reginlinde, viúva do duque anterior.",
+      "certeza": "fato",
+      "fontes": ["db_hermano_suabia", "hls_reginlinde"],
+      "nota": "Base de poder menos própria que a dos outros duques: inferencia. Ver nota de Hermano em personagens_936.json."
+    }
+  },
+  "vocabulario": {
+    "tributo": { "usar": "tributo; censo (pago por povos submetidos)", "evitar": "imposto, taxa", "nota": "Widukind usa 'tributo' para o que Henrique I pagava aos húngaros e 'censo' (Zins) para o que eslavos e boêmios pagavam ao rei." },
+    "presentes": { "usar": "dar presentes, honrar com dons", "nota": "Otto honra cada príncipe com presentes depois da coroação (Widukind II,2). Presente é instrumento político, não gasto." },
+    "exercito": { "usar": "hoste; tropa; cavaleiros com cota de malha; legião (só em tom de crônica)", "evitar": "regimento, batalhão, soldado profissional" },
+    "convocar": { "usar": "convocar a hoste; mandar ou levar homens", "nota": "O Indiculus distingue mandar um contingente de levá-lo pessoalmente." },
+    "mensageiro": { "usar": "mensageiro, enviado, embaixada", "nota": "Widukind fala em mensageiros indo e voltando e trocando presentes antes de um acordo." },
+    "juramento": { "usar": "jurar fidelidade; pôr as mãos entre as mãos do senhor", "nota": "Gesto descrito em Aachen (Widukind II,1). Quebrar o juramento é perjúrio." },
+    "fortaleza": { "usar": "burgo, fortaleza", "evitar": "castelo de pedra (para 936, a maioria era de terra e madeira)", "certeza": "incerto" }
+  },
+  "propostas_de_design": [
+    {
+      "regra": "Soldados em faixas (centenas, poucos milhares), não em números exatos.",
+      "classificacao": "invencao",
+      "motivo": "As fontes dão escala, não contagem."
+    },
+    {
+      "regra": "Quem controla igrejas e mosteiros tem mais homens do que o território sugere.",
+      "classificacao": "invencao plausível",
+      "motivo": "Mais da metade dos cavaleiros de 981 vem de bispos e abades."
+    },
+    {
+      "regra": "Convocar a Saxônia contra outro duque enfraquece a fronteira eslava.",
+      "classificacao": "invencao plausível",
+      "motivo": "Em 955 e em 981 os saxões ficam fora por causa dos eslavos. Pode ser o freio contra a bola de neve que está em aberto no contexto."
+    }
+  ]
+}

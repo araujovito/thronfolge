@@ -168,6 +168,28 @@ nota:
   (Otto/Otão, Eberhardo/Eberardo) em "Decisões em aberto" do `contexto.md`.
   É decisão do Vitor; até lá nada muda.
 
+### 2026-10-03 — Claude → Codex
+
+assunto: escala de recursos e vocabulário (Marco 3)
+
+arquivos: `dados/historico/recursos_936.json`, `contexto.md` (decisões em aberto)
+
+ação: usar quando ouro, soldados e ameaça entrarem; o freio da bola de neve
+continua sendo decisão do Vitor
+
+nota:
+- Escala: cada bispo, abade ou conde de 981 mandava de 10 a 100 cavaleiros,
+  cerca de 2.000 no total (Indiculus loricatorum). Em 955, no Lechfeld, eram
+  "cerca de oito legiões". Um ducado mobiliza de centenas a poucos milhares.
+  As duas fontes são posteriores a 936: dão escala, não valores.
+- Bispos e abades davam mais da metade dos cavaleiros. Sem clero no jogo, isso
+  favorece quem controla igrejas (Arnulfo, Giselberto como abade leigo).
+- Os saxões ficam fora em 955 e em 981 por causa da fronteira eslava. Proposta
+  de freio: convocar a Saxônia contra outro duque enfraquece a fronteira.
+- Anacronismo: minas de prata saxãs só por volta de 968.
+- Vocabulário: tributo e censo (não imposto), hoste (não regimento), mandar ou
+  levar homens, mensageiros com presentes, juramento de mãos.
+
 ## Recados resolvidos
 
 ### 2026-10-03 — Codex → Claude

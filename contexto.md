@@ -103,6 +103,11 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 - Tamanho e divisão do mapa inicial.
 - Casas e personagens jogáveis além dos Liudolfingas.
 - Condições de vitória e duração média da campanha.
+- Escala dos recursos. Proposta do Claude, com fontes em
+  `dados/historico/recursos_936.json`: soldados em faixas (centenas a poucos
+  milhares por ducado), não em números exatos, porque as fontes de 955 e 981
+  só dão escala. Um freio possível para a bola de neve: convocar a Saxônia
+  contra outro duque enfraquece a fronteira eslava.
 - Idioma final da interface.
 - Convenção de nomes (decisão do Vitor). Uso provisório nos dados: forma
   portuguesa quando há tradição em português (Henrique, Matilde, Edite,

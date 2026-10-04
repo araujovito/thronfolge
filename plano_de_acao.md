@@ -115,9 +115,9 @@ razões recuperáveis no histórico, sem evento roteirizado escolher o rei.
 
 **Claude**
 
-- [ ] Revisar apenas ordens de grandeza necessárias para diferenciar regiões;
+- [x] Revisar apenas ordens de grandeza necessárias para diferenciar regiões;
   não inventar censos precisos inexistentes.
-- [ ] Revisar vocabulário de tributo, hoste, mensageiros e juramentos.
+- [x] Revisar vocabulário de tributo, hoste, mensageiros e juramentos.
 
 **Concluído quando:** possuir mais território ajuda, mas não garante a coroa, e
 personagens podem tomar decisões diferentes por conhecerem versões diferentes
