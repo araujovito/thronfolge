@@ -1,6 +1,3 @@
-# Godot
-.godot/
-
 # Builds e artefatos locais
 build/
 dist/

@@ -1,0 +1,9 @@
+{
+  "name": "thronfolge",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node servidor.js",
+    "test": "node --test"
+  }
+}
