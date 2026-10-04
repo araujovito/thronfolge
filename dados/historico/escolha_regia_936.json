@@ -1,0 +1,148 @@
+{
+  "descricao": "Como Otto foi feito rei em 936, e o que isso permite ao sistema de apoio dos cinco grandes. Só os fatos necessários ao sistema, com certeza e fonte.",
+  "convencoes": {
+    "certeza": "fato = dito pela fonte citada; divergente = fontes ou historiadores discordam; inferencia = conclusão minha a partir das fontes; invencao = liberdade de design",
+    "fonte_principal": "Widukind de Corvey escreveu por volta de 967/968, trinta anos depois, já a favor da dinastia. A cena de Aachen pode estar idealizada."
+  },
+  "fontes": {
+    "widukind_schottin": "https://www.wagner-b.de/PDF/Die_Chronik_Widukinds.pdf",
+    "db_otto_i": "https://www.deutsche-biographie.de/sfz74082.html",
+    "db_arnulfo": "https://www.deutsche-biographie.de/sfz52704.html",
+    "db_henrique_baviera": "https://www.deutsche-biographie.de/sfz70052.html",
+    "db_thankmar": "https://www.deutsche-biographie.de/gnd138794502.html",
+    "annales_iuvavenses": "https://en.wikipedia.org/wiki/Annales_iuvavenses"
+  },
+  "etapas_936": [
+    {
+      "id": "designacao",
+      "o_que": "O rei vivo indica o sucessor diante dos grandes.",
+      "em_936": "Henrique I já fizera de Otto o único sucessor na 'ordem da casa' de 929. Doente, em Erfurt, reuniu o povo, designou Otto rei e dividiu bens e tesouros entre os outros filhos.",
+      "certeza": "fato",
+      "fontes": ["db_otto_i", "widukind_schottin"],
+      "nota": "Widukind I,41 cita só Erfurt; a NDB cita 929 e Erfurt. A designação dá legitimidade, mas não faz rei: precisa ser confirmada pela eleição."
+    },
+    {
+      "id": "eleicao",
+      "o_que": "Os grandes escolhem e entronizam o rei e lhe juram fidelidade.",
+      "em_936": "Em Aachen, duques, os principais condes e os vassalos mais importantes põem Otto num trono no pórtico, dão-lhe as mãos e juram fidelidade e ajuda contra todos os inimigos, 'e assim o fizeram rei segundo o seu costume'.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"],
+      "nota": "Widukind II,1. O gesto: quem jura põe as mãos entre as mãos do rei. Data: 7 ou 8 de agosto de 936."
+    },
+    {
+      "id": "aclamacao",
+      "o_que": "O povo reunido aprova o escolhido.",
+      "em_936": "Na basílica, o arcebispo apresenta Otto como 'escolhido por Deus, designado por Henrique e agora feito rei por todos os príncipes'. O povo ergue a mão direita e grita.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"],
+      "nota": "Aprovação de algo já decidido, não votação."
+    },
+    {
+      "id": "uncao_e_coroacao",
+      "o_que": "A Igreja unge e coroa.",
+      "em_936": "Hildeberto, arcebispo de Mainz, com Wigfrido de Colônia, entrega espada, manto, cetro e bastão, unge Otto e o coroa com diadema de ouro. Trier e Colônia disputaram a honra de ungir.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin", "db_otto_i"],
+      "nota": "Henrique I recusara a unção em 919. A unção não era obrigatória para ser rei."
+    },
+    {
+      "id": "banquete",
+      "o_que": "Os duques servem o rei à mesa.",
+      "em_936": "Giselberto da Lotaríngia, dono do lugar, organiza a festa; Eberhardo cuida da mesa; Hermano chefia os copeiros; Arnulfo cuida dos cavaleiros e do acampamento. Depois Otto dá presentes a cada príncipe.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin", "db_arnulfo"],
+      "nota": "Serviço público dos quatro duques: sinal visível de reconhecimento. A NDB chama Arnulfo de 'marechal'."
+    }
+  ],
+  "fatos_para_o_sistema": [
+    {
+      "fato": "A escolha buscava consenso, não maioria. Não há contagem de votos nas fontes.",
+      "certeza": "inferencia",
+      "fontes": ["widukind_schottin"]
+    },
+    {
+      "fato": "Em 919, só francos e saxões escolheram Henrique I, em Fritzlar. A Suábia aderiu ainda em 919 e a Baviera só em 921, por acordo. Ou seja, um rei feito por parte dos grandes e reconhecido pelos outros depois tem precedente.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin", "db_arnulfo"]
+    },
+    {
+      "fato": "Em 919 Arnulfo ficou de fora da eleição e reivindicou para si o título de rei. Não se sabe se foi um contrarreinado ou só afirmação de autonomia da Baviera.",
+      "certeza": "divergente",
+      "fontes": ["db_arnulfo", "annales_iuvavenses"]
+    },
+    {
+      "fato": "O acordo de Ratisbona (921) deu a Arnulfo autonomia interna e externa em troca de reconhecer o rei.",
+      "certeza": "fato",
+      "fontes": ["db_arnulfo"]
+    },
+    {
+      "fato": "Em 918, Conrado I, moribundo, mandou o irmão Eberhardo levar as insígnias a Henrique da Saxônia. Eberhardo obedeceu e proclamou Henrique rei em 919. Precedente de rei de outra casa.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"]
+    },
+    {
+      "fato": "A Saxônia não tinha duque em 936: Siegfried, 'o segundo depois do rei', a administrava durante a coroação e tinha consigo o jovem Henrique.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"]
+    },
+    {
+      "fato": "O apoio não era permanente: em 938 Thankmar se juntou à revolta de Eberhardo; em 938/939 Henrique se aliou a Eberhardo, a Giselberto e a parte dos grandes saxões contra Otto.",
+      "certeza": "fato",
+      "fontes": ["db_thankmar", "db_henrique_baviera"]
+    }
+  ],
+  "argumentos_de_legitimidade": {
+    "otto": { "argumento": "Designado pelo pai (929 e Erfurt 936); primogênito do casamento válido.", "certeza": "fato", "fontes": ["db_otto_i", "widukind_schottin"] },
+    "henrique": { "argumento": "Nasceu quando o pai já era rei, ao contrário de Otto.", "certeza": "fato", "fontes": ["db_henrique_baviera"] },
+    "thankmar": { "argumento": "Filho mais velho de Henrique I, mas de casamento anulado; preterido. Otto continuou lhe negando a herança de Merseburg: queixa concreta, não só de princípio.", "certeza": "fato", "fontes": ["db_thankmar"] },
+    "eberhardo": { "argumento": "Irmão do rei Conrado I e portador das insígnias em 918; mas foi ele quem as entregou a Henrique.", "certeza": "fato", "fontes": ["widukind_schottin"] },
+    "arnulfo": { "argumento": "Reivindicou o título real em 919.", "certeza": "divergente", "fontes": ["db_arnulfo"] },
+    "giselberto": { "argumento": "Casado com Gerberga, filha de Henrique I. Nenhuma reivindicação ao trono nas fontes consultadas.", "certeza": "fato", "fontes": ["widukind_schottin"] },
+    "hermano_suabia": { "argumento": "Nenhuma reivindicação conhecida; fiel a Henrique I e a Otto.", "certeza": "fato", "fontes": ["db_otto_i"] }
+  },
+  "simplificacoes_para_cinco_poderes": [
+    {
+      "regra": "Cada duque representa os grandes da sua região: condes, vassalos e bispos não aparecem.",
+      "classificacao": "invencao plausível",
+      "risco": "Esconde que o duque nem sempre controlava seus condes."
+    },
+    {
+      "regra": "Três apoios bastam para ser feito rei.",
+      "classificacao": "invencao",
+      "apoio_historico": "O precedente de 919: rei feito por parte dos grandes e reconhecido pelos outros depois.",
+      "risco": "O ideal da época era o consenso. Opção alternativa: com três apoios o jogador é eleito, mas quem não apoiou continua como pendência (reconhecer, negociar ou resistir), como a Baviera entre 919 e 921."
+    },
+    {
+      "regra": "Qualquer um dos cinco governantes pode ser pretendente.",
+      "classificacao": "plausível",
+      "apoio_historico": "Conrado I era franco e Henrique I saxão, ambos sem ligação com a casa real anterior; Arnulfo reivindicou o título em 919."
+    },
+    {
+      "regra": "Otto à frente da Saxônia conta o apoio saxão como próprio.",
+      "classificacao": "invencao",
+      "risco": "Historicamente a Saxônia era administrada por Siegfried, que não está no jogo. Opção: tratar Siegfried como um sexto apoio, não jogável, ou manter a simplificação e avisar na interface."
+    },
+    {
+      "regra": "A eleição já faz rei; unção e coroação são consequência automática.",
+      "classificacao": "plausível",
+      "apoio_historico": "Henrique I foi rei sem unção."
+    },
+    {
+      "regra": "Depois da eleição, o apoio pode ser retirado.",
+      "classificacao": "plausível",
+      "apoio_historico": "Rebeliões de 938 e 939."
+    },
+    {
+      "regra": "Os duques que apoiaram servem no banquete (mesa, copa, cavaleiros, festa).",
+      "classificacao": "plausível",
+      "apoio_historico": "Banquete de Aachen. Pode ser o registro visível de quem apoiou, sem criar sistema novo."
+    }
+  ],
+  "termos_para_a_interface": {
+    "designacao": "designou como sucessor",
+    "eleicao": "fizeram-no rei / juraram-lhe fidelidade",
+    "aclamacao": "o povo aclamou",
+    "uncao_e_coroacao": "foi ungido e coroado",
+    "evitar": ["votar", "voto", "maioria", "imperador (antes de 962)", "Sacro Império", "Alemanha"]
+  }
+}

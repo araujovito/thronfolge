@@ -68,7 +68,7 @@ Hoje o usuário apenas observa. Este marco cria escolhas e consequências.
 
 **Claude**
 
-- [ ] Revisar o significado político de eleição, aclamação e coroação em 936.
+- [x] Revisar o significado político de eleição, aclamação e coroação em 936.
 - [ ] Escrever textos curtos para proposta, aceitação, recusa e difamação.
 - [ ] Separar formulação historicamente plausível de liberdade assumida pelo
   design.
@@ -91,7 +91,7 @@ mês e consegue alterar deliberadamente uma relação.
 
 **Claude**
 
-- [ ] Revisar quem participa da escolha real e quais simplificações são
+- [x] Revisar quem participa da escolha real e quais simplificações são
   aceitáveis para cinco poderes.
 - [ ] Revisar nomes de títulos, reivindicações e cerimônias.
 - [ ] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
