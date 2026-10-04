@@ -1,0 +1,155 @@
+{
+  "descricao": "Referências para retratos em camadas (SVG) dos personagens de julho de 936. Não há retrato fiel de nenhum deles: os selos seguem modelo carolíngio e as estátuas são do século XIII. O desenho é invenção de jogo guiada por estas referências. Entra no Marco 6 do plano.",
+  "convencoes": {
+    "certeza": "fato = descrito na fonte citada; aproximado = prática geral da época, não específica da pessoa; incerto = não conferido ou contestado; invencao = liberdade de design proposta",
+    "camadas": "rosto (idade, sexo), cabelo, barba, roupa, cabeça (diadema, véu, tonsura), insígnia"
+  },
+  "fontes": {
+    "widukind_schottin": "https://www.wagner-b.de/PDF/Die_Chronik_Widukinds.pdf",
+    "commons_otto_i": "https://commons.wikimedia.org/wiki/Otto_I,_Holy_Roman_Emperor",
+    "mainz_editha_2010": "https://presse.uni-mainz.de/files/2023/01/10_anthropologie_Editha_16_06_2010.pdf",
+    "md_selo_otto": "https://st.museum-digital.de/pdf/object/1949.pdf?lang=en",
+    "smb_heginric": "https://smb.museum-digital.de/pdf/object/150613.pdf?lang=de",
+    "meier_sporn_2008": "https://archiv.ub.uni-heidelberg.de/propylaeumdok/4382/1/Meier_Sporn_2008.pdf"
+  },
+  "regras_gerais": [
+    {
+      "camada": "roupa",
+      "grupo": "homens leigos da nobreza",
+      "referencia": "Túnica de mangas longas com barras bordadas; manto preso por fíbula no ombro direito; faixas enroladas nas pernas.",
+      "certeza": "aproximado",
+      "fontes": ["md_selo_otto", "meier_sporn_2008"],
+      "nota": "A fíbula no ombro direito aparece no selo de Otto. As faixas nas pernas vêm da descrição de Carlos Magno por Einhard, modelo franco anterior."
+    },
+    {
+      "camada": "roupa",
+      "grupo": "rei",
+      "referencia": "Na coroação de 936: veste franca justa; depois, manto até o chão preso com fivelas, espada com cinturão, cetro e bastão, diadema de ouro.",
+      "certeza": "fato",
+      "fontes": ["widukind_schottin"],
+      "nota": "Widukind II,1. Escrito por volta de 967, trinta anos depois da cena."
+    },
+    {
+      "camada": "insignia",
+      "grupo": "rei e herdeiro",
+      "referencia": "Nos selos: busto com lança de bandeira apoiada no ombro e escudo redondo com umbo. O selo é imagem de função, não retrato.",
+      "certeza": "fato",
+      "fontes": ["md_selo_otto", "commons_otto_i"],
+      "nota": "Selo de Otto usado de 936 a 952."
+    },
+    {
+      "camada": "insignia",
+      "grupo": "duques",
+      "referencia": "Nenhuma insígnia ducal própria de 936 foi encontrada nas fontes consultadas. O chapéu ducal é de séculos posteriores e não deve ser usado.",
+      "certeza": "incerto",
+      "fontes": [],
+      "nota": "Proposta de design (invencao): lança com bandeira e manto com fíbula, sem diadema. Assim o diadema fica exclusivo do rei."
+    },
+    {
+      "camada": "cabeca",
+      "grupo": "mulheres casadas e viúvas",
+      "referencia": "Véu ou pano cobrindo o cabelo.",
+      "certeza": "aproximado",
+      "fontes": [],
+      "nota": "Prática comum na imagem da época, não conferida em fonte nesta rodada."
+    },
+    {
+      "camada": "cabeca",
+      "grupo": "clérigos",
+      "referencia": "Tonsura.",
+      "certeza": "aproximado",
+      "fontes": [],
+      "nota": "Para Bruno, com uns 11 anos e aluno em Utrecht, a tonsura é possível mas não confirmada."
+    },
+    {
+      "camada": "barba",
+      "grupo": "homens leigos",
+      "referencia": "Widukind diz que a barba longa de Otto ia 'contra o costume antigo'. Isso sugere que o costume era barba curta ou rosto raspado.",
+      "certeza": "incerto",
+      "fontes": ["widukind_schottin"],
+      "nota": "Inferência a partir de uma frase só."
+    },
+    {
+      "camada": "roupa",
+      "grupo": "anacronismos a evitar",
+      "referencia": "Coroa imperial (Reichskrone), chapéu ducal, brasões heráldicos, armadura de placas, cota de malha até os pés.",
+      "certeza": "aproximado",
+      "fontes": [],
+      "nota": "A datação da coroa imperial é discutida (962 ou depois). Em 936 Otto nem é imperador."
+    }
+  ],
+  "personagens": {
+    "otto": {
+      "idade_em_936": 23,
+      "documentado": [
+        {
+          "texto": "Selo de 936–952: sem barba, cabelo longo preso por um aro, manto com fíbula no ombro direito, lança de bandeira, escudo com umbo.",
+          "certeza": "fato",
+          "fontes": ["md_selo_otto"]
+        },
+        {
+          "texto": "Widukind, já com Otto maduro: corpo grande, cabelo grisalho, olhos que faíscam, rosto avermelhado, barba longa 'contra o costume antigo', peito peludo 'como juba de leão', roupa sempre da terra, nunca estrangeira.",
+          "certeza": "fato",
+          "fontes": ["widukind_schottin"]
+        }
+      ],
+      "divergencia": "Os dois não se contradizem: o selo é convencional e Widukind descreve Otto anos depois de 936. Proposta (invencao) para 936, aos 23 anos: corpo grande, rosto avermelhado, barba curta que cresce com a idade.",
+      "imagens_existentes": ["selos de 936, 966 e 968", "estátua com Edite na catedral de Magdeburgo (c. 1250)", "Cavaleiro de Magdeburgo (identificação provável, século XIII)"],
+      "fontes": ["commons_otto_i"]
+    },
+    "edite": {
+      "idade_em_936": 26,
+      "documentado": [
+        {
+          "texto": "Ossos de Magdeburgo (2008–2010): mulher de cerca de 1,57 m que montava a cavalo com frequência e comia bem. Crânio perdido, só o maxilar: não há reconstrução do rosto, nem cor de cabelo ou olhos.",
+          "certeza": "fato",
+          "fontes": ["mainz_editha_2010"]
+        },
+        {
+          "texto": "Cresceu em Wessex, perto de Winchester. Widukind diz que Otto usava só roupa da terra; para Edite não há indicação de roupa inglesa ou saxã.",
+          "certeza": "incerto",
+          "fontes": ["mainz_editha_2010", "widukind_schottin"]
+        }
+      ],
+      "imagens_existentes": ["tampa do cenotáfio de 1510", "estátua com Otto na catedral de Magdeburgo (c. 1250)"],
+      "fontes": ["mainz_editha_2010", "commons_otto_i"]
+    },
+    "henrique_i": {
+      "idade_em_936": 60,
+      "documentado": [
+        {
+          "texto": "Medalhão de prata 'Heginric' (Münzkabinett de Berlim, 919–936, atribuído a ele): busto de perfil com diadema e manto sobre o ombro.",
+          "certeza": "incerto",
+          "fontes": ["smb_heginric"]
+        }
+      ],
+      "nota": "Morto na data inicial. Só precisa de retrato para memórias e árvore genealógica. A ficha do museu estava fora do ar na conferência.",
+      "fontes": ["smb_heginric"]
+    },
+    "henrique": {
+      "idade_em_936": "14–17",
+      "documentado": [
+        {
+          "texto": "Widukind II,36: muito bonito, conquistava todos na juventude pela beleza; caráter sério, visto como pouco afável por quem não o conhecia.",
+          "certeza": "fato",
+          "fontes": ["widukind_schottin"]
+        }
+      ],
+      "fontes": ["widukind_schottin"]
+    },
+    "matilde": {
+      "idade_em_936": 40,
+      "documentado": [],
+      "nota": "Viúva desde julho de 936: véu (aproximado). Imagens medievais dela não foram conferidas nesta rodada.",
+      "fontes": []
+    },
+    "bruno": {
+      "idade_em_936": 11,
+      "documentado": [],
+      "nota": "Criança destinada ao clero. Tonsura incerta.",
+      "fontes": []
+    }
+  },
+  "sem_referencia_especifica": ["hatheburga", "thankmar", "guilherme", "liudolfo", "liutgarda", "gerberga", "edviges", "giselberto", "eberhardo", "arnulfo", "hermano_suabia", "hermano_billung", "gero"],
+  "nota_sem_referencia": "Para esses, usar só as regras gerais, a idade e o cargo. Nenhuma imagem ou descrição física foi encontrada."
+}
