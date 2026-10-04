@@ -1,91 +1,183 @@
-# Plano de ação
+# Plano de ação — Thronfolge
 
-Este é o roteiro único do trabalho futuro. Cada etapa termina em algo testável;
-não se começa a etapa seguinte apenas para preencher estrutura.
+Este é o roteiro único do projeto. A prioridade é chegar a uma campanha curta,
+com início histórico e desfecho emergente, antes de ampliar mapa, genealogia ou
+apresentação.
 
-## Princípios de julgamento
+## Definição da primeira versão jogável
 
-- Validar a diversão da política antes de produzir arte ou ampliar o mapa.
-- História documentada inicializa o mundo; regras simuladas decidem o futuro.
-- Toda informação pertence a alguém: o estado verdadeiro não é conhecimento
-  automático dos personagens.
-- Começar sem dependências externas, serviços pagos ou LLM em tempo de jogo.
-- Não criar dezenas de atributos quando um acontecimento concreto explica a
-  relação entre duas pessoas.
+Hipóteses provisórias para impedir que o desenvolvimento fique parado:
 
-## Etapa 1 — Núcleo verificável
+- o jogador controla um pretendente; os demais são agentes determinísticos;
+- a campanha começa em 2 de julho de 936 e dura no máximo 24 turnos mensais;
+- o objetivo é obter o apoio de três dos cinco grandes poderes políticos;
+- a vitória precisa resultar de decisões, recursos, conhecimento e relações;
+- não haverá combate tático, mapa geográfico preciso, LLM ou árvore dinástica
+  completa nessa versão.
 
-**Codex**
+Essas hipóteses podem mudar, mas uma mudança deve substituir uma regra concreta,
+não apenas acrescentar sistemas.
 
-- [x] Escolher uma tecnologia executável no ambiente atual.
-- [x] Criar estado de mundo independente da interface.
-- [x] Implementar acontecimentos, testemunhas e memórias individuais.
-- [x] Derivar confiança e rancor das memórias, sem reputação global.
-- [x] Implementar um primeiro turno determinístico de decisões.
-- [x] Cobrir isolamento de informação e determinismo com testes.
-- [x] Submeter as regras de utilidade a partidas simuladas e ajustar excessos.
+## Regras de qualidade
 
-**Claude**
+- História documentada inicializa o mundo; não força o futuro.
+- Fato, percepção e memória são dados separados.
+- Toda decisão de agente deve poder ser explicada pela interface.
+- Poder vem de territórios, ouro e soldados; legitimidade não é poder.
+- Nenhuma ação altera o estado sem validar custo, alcance e conhecimento.
+- Sistemas novos precisam de teste e de uma função visível na campanha.
+- Codex implementa e testa; Claude pesquisa e revisa conteúdo histórico.
 
-- [x] Revisar a família liudolfinga existente em `contexto.md`.
-- [x] Entregar o primeiro conjunto histórico em formato curto: pessoa, nomes,
-  pais, cônjuges vigentes em julho de 936, título, data e fontes
-  (`dados/historico/personagens_936.json`).
-- [x] Separar fatos, datas aproximadas e hipóteses historiográficas.
-- [x] Revisar os textos públicos da abertura sem transformar inferências em
-  fatos.
-
-**Critério de conclusão**
-
-Uma simulação pequena roda repetidamente com o mesmo resultado; um personagem
-não reage a um acontecimento que não conhece; relações podem ser explicadas por
-uma lista de memórias.
-
-## Etapa 2 — Primeiro mapa jogável
+## Marco 0 — Consolidar o protótipo atual
 
 **Codex**
 
-- [x] Criar a interface web sem bibliotecas externas.
-- [x] Exibir um mapa esquemático de cinco ducados, claramente provisório.
-- [x] Permitir selecionar região e personagem e avançar um mês.
-- [x] Mostrar notícias públicas e memórias conhecidas pelo personagem do
-  jogador.
-- [x] Salvar e carregar uma partida localmente.
+- [x] Criar simulação determinística com acontecimentos e memória individual.
+- [x] Remover acesso dos agentes à legitimidade verdadeira de terceiros.
+- [x] Criar cenário inicial a partir dos dados históricos revisados.
+- [x] Criar mapa esquemático, passagem mensal e salvamento local.
+- [x] Corrigir a apresentação do dia inicial e dos meses seguintes.
+- [x] Impedir que tipos internos de evento apareçam na interface.
+- [ ] Fazer uma inspeção visual real no navegador.
+- [ ] Criar um commit-base depois da revisão visual.
 
 **Claude**
 
-- [x] Validar quais entidades políticas devem aparecer no recorte de 936.
-- [x] Fornecer governantes e vínculos necessários, sem biografias completas.
-- [x] Revisar nomes, títulos e avisos de simplificação histórica da interface.
+- [x] Revisar família, governantes, títulos e fontes de julho de 936.
+- [x] Revisar o texto da morte de Henrique I e o aviso do mapa esquemático.
 
-**Critério de conclusão**
+**Concluído quando:** o protótipo abre sem erros, avança doze meses, salva,
+carrega e não apresenta texto técnico ou afirmação histórica indevida.
 
-O jogador entende quem controla cada região, avança doze turnos e consegue
-explicar por que ao menos uma relação política mudou.
+## Marco 1 — Transformar o protótipo em jogo
 
-## Etapa 3 — Disputa pela coroa
+Hoje o usuário apenas observa. Este marco cria escolhas e consequências.
 
 **Codex**
 
-- [ ] Implementar legitimidade, apoio dos grandes e eleição/aclamação.
-- [ ] Adicionar ações de negociar, ameaçar, difamar, espionar e mobilizar.
-- [ ] Validar recursos, conhecimento e alcance de cada ação.
-- [ ] Criar condição de vitória provisória e relatório de fim de campanha.
+- [x] Criar tela de escolha do personagem inicial.
+- [x] Separar turno do jogador e resolução dos agentes.
+- [x] Implementar ações manuais: conversar, oferecer acordo e difamar.
+- [x] Mostrar alvo e condição antes da confirmação; custos entram quando
+  existirem recursos.
+- [ ] Permitir que o alvo aceite, recuse ou proponha contrapartida.
+- [x] Registrar cada resultado como acontecimento e memória.
+- [x] Explicar relações pelas memórias conhecidas; decisões de agentes ainda
+  precisam de justificativa individual.
+- [x] Impedir ações inválidas; restrições por informação entram com espionagem.
 
 **Claude**
 
-- [ ] Revisar o que “sucessão” e “realeza” significam nesse recorte.
-- [ ] Preparar linguagem curta para juramentos, reivindicações e recusas.
-- [ ] Marcar liberdades de design necessárias para tornar o sistema legível.
+- [ ] Revisar o significado político de eleição, aclamação e coroação em 936.
+- [ ] Escrever textos curtos para proposta, aceitação, recusa e difamação.
+- [ ] Separar formulação historicamente plausível de liberdade assumida pelo
+  design.
 
-**Critério de conclusão**
+**Concluído quando:** o jogador toma pelo menos uma decisão significativa por
+mês e consegue alterar deliberadamente uma relação.
 
-Uma campanha completa possui vencedor sem evento roteirizado e produz caminhos
-diferentes quando decisões iniciais mudam.
+## Marco 2 — Sucessão e condição de vitória
 
-## Etapa 4 — Profundidade e apresentação
+**Codex**
 
-Só entra depois de a etapa 3 ser divertida. Inclui rumores distorcidos,
-casamentos, sucessão familiar, guerra, mapa historicamente melhor, arte, áudio e
-possível empacotamento para desktop. Um modelo local só será testado aqui e
-precisará superar regras determinísticas numa avaliação controlada.
+- [ ] Criar reivindicações e legitimidade explicadas por causas concretas.
+- [ ] Criar apoio político direcionado: cada grande apoia alguém ou ninguém.
+- [ ] Implementar promessa, dívida e quebra de compromisso.
+- [ ] Realizar eleição/aclamação quando houver apoio suficiente.
+- [ ] Encerrar a campanha por vitória, derrota ou limite de 24 meses.
+- [ ] Gerar relatório final com a cadeia de acontecimentos decisivos.
+- [ ] Simular centenas de campanhas para localizar vitórias automáticas,
+  empates permanentes e estratégias dominantes.
+
+**Claude**
+
+- [ ] Revisar quem participa da escolha real e quais simplificações são
+  aceitáveis para cinco poderes.
+- [ ] Revisar nomes de títulos, reivindicações e cerimônias.
+- [ ] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
+
+**Concluído quando:** campanhas completas produzem vencedores diferentes por
+razões recuperáveis no histórico, sem evento roteirizado escolher o rei.
+
+## Marco 3 — Recursos, ameaça e informação imperfeita
+
+**Codex**
+
+- [ ] Fazer regiões gerarem ouro e capacidade de mobilização.
+- [ ] Calcular soldados disponíveis, convocados e seu custo de manutenção.
+- [ ] Implementar ameaça usando poder percebido, não poder verdadeiro.
+- [ ] Criar espionagem para atualizar estimativas sobre rivais.
+- [ ] Fazer notícias se propagarem entre personagens com origem registrada.
+- [ ] Adicionar rumores incompletos ou errados somente depois de a transmissão
+  de fatos verdadeiros estar testada.
+- [ ] Criar freios à bola de neve: manutenção, resistência local e coalizões.
+
+**Claude**
+
+- [ ] Revisar apenas ordens de grandeza necessárias para diferenciar regiões;
+  não inventar censos precisos inexistentes.
+- [ ] Revisar vocabulário de tributo, hoste, mensageiros e juramentos.
+
+**Concluído quando:** possuir mais território ajuda, mas não garante a coroa, e
+personagens podem tomar decisões diferentes por conhecerem versões diferentes
+da mesma situação.
+
+## Marco 4 — Diplomacia e conflito
+
+**Codex**
+
+- [ ] Adicionar alianças, garantias, reféns políticos e ultimatos.
+- [ ] Implementar mobilização e guerra abstrata por regiões, sem batalha tática.
+- [ ] Fazer agressão gerar custos, testemunhas e novas coalizões.
+- [ ] Permitir rendição, negociação e mudança de lado.
+- [ ] Verificar que guerra é uma opção política, não a solução universal.
+
+**Claude**
+
+- [ ] Revisar práticas plausíveis de negociação e conflito no século X.
+- [ ] Escrever mensagens curtas para ultimatos, rendições e acordos.
+
+**Concluído quando:** uma guerra muda a disputa política sem substituir todo o
+jogo por comparação de números militares.
+
+## Marco 5 — Família e continuidade
+
+Só começar se a campanha política dos marcos anteriores já for divertida.
+
+- [ ] Integrar parentes, casamentos e filhos relevantes do arquivo histórico.
+- [ ] Criar casamento como acordo político, não como catálogo de personagens.
+- [ ] Implementar morte, herança e sucessão familiar.
+- [ ] Permitir campanhas maiores apenas depois de validar o recorte de 936.
+- [ ] Pedir ao Claude novos personagens por necessidade do sistema, em pequenos
+  conjuntos com fontes, nunca uma enciclopédia antecipada.
+
+## Marco 6 — Apresentação e distribuição
+
+- [ ] Substituir o mapa esquemático por representação historicamente orientada.
+- [ ] Melhorar retratos, brasões, tipografia, áudio e acessibilidade.
+  Retratos: SVG em camadas, estilo CK, a partir de
+  `dados/historico/referencias_visuais_936.json`.
+- [ ] Versionar saves e criar migrações.
+- [ ] Fazer testes de usabilidade e balanceamento com jogadores.
+- [ ] Avaliar empacotamento para desktop somente depois da campanha completa.
+- [ ] Avaliar modelo local apenas contra uma versão determinística já medida;
+  rejeitá-lo se não melhorar decisões de forma perceptível.
+
+## Fora do escopo atual
+
+- mapa completo da Europa;
+- batalhas em tempo real ou unidades caminhando no mapa;
+- economia detalhada de cidades;
+- multiplayer;
+- reprodução obrigatória de eventos posteriores a 2 de julho de 936;
+- chamadas pagas de IA durante a partida;
+- biografias completas de personagens que ainda não afetam a campanha.
+
+## Próxima ordem de execução
+
+1. Codex corrige as duas pendências de interface e realiza a revisão visual.
+2. Claude pesquisa a escolha régia de 936 e entrega apenas as regras necessárias
+   ao sistema de apoio.
+3. Codex implementa escolha de personagem e as três primeiras ações do jogador.
+4. Ambos revisam uma campanha manual de doze turnos antes de criar recursos ou
+   guerra.
