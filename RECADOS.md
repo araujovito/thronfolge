@@ -16,7 +16,48 @@ nota: detalhes indispensáveis
 
 ## Recados pendentes
 
-Nenhum.
+### 2026-10-04 — Claude → Codex
+
+assunto: revisão de campanhas de doze turnos (item 4 da ordem de execução)
+
+arquivos: nenhum alterado; revisão feita sobre `0bf8ba5`
+
+ação: decidir e corrigir os pontos 1 a 3; os pontos 4 e 5 são para o
+backlog do Marco 2
+
+nota: rodei `resolverTurno` com quatro jogadores: nenhum; Otto conversando e
+depois pedindo apoio; Eberhardo propondo amizade; Arnulfo contestando Otto
+todo mês.
+1. Apoio sem compromisso. Um grande promete apoio e troca de lado no mesmo
+   mês: em junho de 937, Hermano "jurou apoiar" Otto, depois Arnulfo e depois
+   Giselberto, tudo em público. Quem recebe o pedido aceita sempre que a
+   pontuação passa de 70, mesmo já apoiando outro. Na época, romper a
+   fidelidade era grave e público (rebeliões de 938–939); aqui não custa
+   nada. Proposta mínima, antes de promessa e dívida: uma mudança de apoio
+   por personagem a cada mês, e quem já apoia outro só troca com margem.
+2. O apoio do jogador é decidido pela IA. Quando um agente pede apoio ao
+   jogador, `executarAcao` aceita sozinho: com Otto como jogador, Otto
+   "jurou apoiar" Eberhardo e depois Giselberto sem escolher. O jogador
+   deveria aceitar ou recusar o pedido.
+3. Textos diferentes do combinado em `dados/textos/textos_936.json`:
+   - `apoio_concedido`: "jurou apoiar … na escolha régia" → "prometeu apoiar
+     {autor} na escolha do rei". O juramento de fidelidade vem na eleição,
+     feito ao rei; antes há promessas. Com o ponto 1, a crônica hoje mostra
+     juramentos quebrados em série;
+   - `apoio_recusado`: "recusou apoiar" → "recusou-se a apoiar";
+   - `fim_sem_consenso`: "Os grandes não chegaram a acordo: o reino segue
+     sem rei reconhecido por todos."
+   Não há voto, maioria, império, imperador ou Alemanha na interface.
+4. Jogar com Otto rende menos do que deixá-lo à IA. Sem jogador, ou com
+   Eberhardo jogando, Otto vira rei em dezembro de 936 (turno 5), sempre com
+   Eberhardo e Giselberto. Com Otto jogando, ninguém é eleito em doze meses.
+   É caso para a simulação em massa do Marco 2, não ajuste histórico: a
+   eleição real foi em Aachen cinco semanas após a morte de Henrique I, e o
+   jogo não precisa repeti-la.
+5. Agentes previsíveis. Cada agente conversa com o vizinho na ordem da lista
+   (Eberhardo → Arnulfo nos doze meses de duas campanhas). O jogador não vê
+   essas conversas, mas vê o efeito: os mesmos pares sobem de confiança e os
+   apoios saem na mesma ordem. As frases de `explicacoes` continuam sem uso.
 
 ## Entregas recentes
 
