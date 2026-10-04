@@ -7,9 +7,13 @@ import {
   conheceEvento,
   criarEstado,
   decidirAcao,
+  executarAcao,
+  memoriasSobre,
   registrarEvento,
   relacaoCom,
   percepcaoDe,
+  resolverTurno,
+  validarAcao,
 } from "../src/simulacao.js";
 
 function mundo() {
@@ -61,6 +65,10 @@ test("a relação é explicável pela soma das memórias do observador", () => {
     confianca: 0,
     rancor: 0,
   });
+  assert.deepEqual(
+    memoriasSobre(estado, "norte", "sul").map((item) => item.evento.tipo),
+    ["ajuda", "traicao"],
+  );
 });
 
 test("rancor conhecido altera a decisão, sem acesso a fatos globais", () => {
@@ -194,4 +202,69 @@ test("autor e alvo conhecem o evento mesmo se o chamador omitir envolvidos", () 
   assert.equal(conheceEvento(estado, "norte", evento.id), true);
   assert.equal(conheceEvento(estado, "sul", evento.id), true);
   assert.equal(conheceEvento(estado, "leste", evento.id), false);
+});
+
+test("conversa cria memórias diferentes para os dois participantes", () => {
+  const estado = mundo();
+  executarAcao(estado, { tipo: "conversar", autor: "norte", alvo: "sul" });
+  assert.equal(relacaoCom(estado, "norte", "sul").confianca, 2);
+  assert.equal(relacaoCom(estado, "sul", "norte").confianca, 5);
+  assert.equal(estado.personagens.find((pessoa) => pessoa.id === "leste").memoria.length, 0);
+});
+
+test("acordo depende da percepção e da relação do alvo", () => {
+  const estado = mundo();
+  estado.personagens.find((pessoa) => pessoa.id === "sul").percepcoes.norte = {
+    legitimidade: 45,
+  };
+  const aceito = executarAcao(estado, {
+    tipo: "oferecer_acordo", autor: "norte", alvo: "sul",
+  });
+  assert.equal(aceito.tipo, "acordo_aceito");
+
+  const outro = mundo();
+  const recusado = executarAcao(outro, {
+    tipo: "oferecer_acordo", autor: "norte", alvo: "sul",
+  });
+  assert.equal(recusado.tipo, "acordo_recusado");
+});
+
+test("turno do jogador não deixa a IA decidir por ele", () => {
+  const estado = mundo();
+  const eventos = resolverTurno(
+    estado,
+    { tipo: "conversar", autor: "norte", alvo: "sul" },
+    "norte",
+  );
+  assert.equal(estado.turno, 1);
+  assert.equal(eventos.filter((evento) => evento.autor === "norte").length, 1);
+  assert.equal(eventos.find((evento) => evento.autor === "norte").tipo, "conversa");
+});
+
+test("ações inválidas são rejeitadas antes de alterar o estado", () => {
+  const estado = mundo();
+  const antes = structuredClone(estado);
+  assert.deepEqual(
+    validarAcao(estado, { tipo: "conversar", autor: "norte", alvo: "norte" }),
+    { valida: false, motivo: "o personagem não pode ser o próprio alvo" },
+  );
+  assert.throws(
+    () => executarAcao(estado, { tipo: "conversar", autor: "norte", alvo: "norte" }),
+    /próprio alvo/,
+  );
+  assert.deepEqual(estado, antes);
+});
+
+test("turno inteiro permanece intacto quando a ação do jogador é inválida", () => {
+  const estado = mundo();
+  const antes = structuredClone(estado);
+  assert.throws(
+    () => resolverTurno(
+      estado,
+      { tipo: "conversar", autor: "norte", alvo: "norte" },
+      "norte",
+    ),
+    /próprio alvo/,
+  );
+  assert.deepEqual(estado, antes);
 });

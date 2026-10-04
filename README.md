@@ -35,6 +35,6 @@ navegador carrega os dados históricos em JSON. Nenhuma conexão externa é feit
 
 ## Estado atual
 
-O núcleo de acontecimentos, conhecimento individual, memórias, relações e um
-primeiro turno determinístico está implementado, com um mapa esquemático
-jogável dos cinco ducados de 936.
+O núcleo de acontecimentos, conhecimento individual, memórias e relações está
+implementado. O jogador escolhe um governante, toma uma ação política por mês e
+acompanha as reações dos outros agentes num mapa esquemático dos cinco ducados.

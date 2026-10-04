@@ -103,6 +103,17 @@ export function relacaoCom(estado, observadorId, alvoId) {
   return total;
 }
 
+export function memoriasSobre(estado, observadorId, alvoId) {
+  const observador = personagem(estado, observadorId);
+  return observador.memoria
+    .filter((memoria) => memoria.impactos[alvoId])
+    .map((memoria) => ({
+      evento: estado.eventos.find((evento) => evento.id === memoria.evento_id),
+      impacto: copiar(memoria.impactos[alvoId]),
+    }))
+    .filter((item) => item.evento);
+}
+
 export function percepcaoDe(estado, observadorId, alvoId) {
   const observador = personagem(estado, observadorId);
   const alvo = personagem(estado, alvoId);
@@ -159,9 +170,59 @@ export function decidirAcao(estado, atorId) {
   return { tipo: "aguardar", autor: ator.id };
 }
 
-function executarAcao(estado, acao) {
+export function validarAcao(estado, acao) {
+  const tipos = new Set(["aguardar", "conversar", "oferecer_acordo", "difamar"]);
+  if (!tipos.has(acao.tipo)) return { valida: false, motivo: "ação desconhecida" };
+  try {
+    personagem(estado, acao.autor);
+  } catch {
+    return { valida: false, motivo: "autor inexistente" };
+  }
+  if (acao.tipo === "aguardar") return { valida: true, motivo: "" };
+  if (!acao.alvo) return { valida: false, motivo: "escolha um alvo" };
+  try {
+    personagem(estado, acao.alvo);
+  } catch {
+    return { valida: false, motivo: "alvo inexistente" };
+  }
+  if (acao.autor === acao.alvo) {
+    return { valida: false, motivo: "o personagem não pode ser o próprio alvo" };
+  }
+  return { valida: true, motivo: "" };
+}
+
+export function executarAcao(estado, acao) {
+  const validacao = validarAcao(estado, acao);
+  exigir(validacao.valida, validacao.motivo);
   const autor = personagem(estado, acao.autor);
   if (acao.tipo === "aguardar") return null;
+
+  if (acao.tipo === "conversar") {
+    return registrarEvento(estado, {
+      tipo: "conversa",
+      autor: autor.id,
+      alvo: acao.alvo,
+      impactos: {
+        [autor.id]: { [acao.alvo]: { confianca: 2 } },
+        [acao.alvo]: { [autor.id]: { confianca: 5 } },
+      },
+    });
+  }
+
+  if (acao.tipo === "oferecer_acordo") {
+    const relacao = relacaoCom(estado, acao.alvo, autor.id);
+    const percepcao = percepcaoDe(estado, acao.alvo, autor.id);
+    const aceita = relacao.confianca - relacao.rancor + percepcao.legitimidade >= 40;
+    return registrarEvento(estado, {
+      tipo: aceita ? "acordo_aceito" : "acordo_recusado",
+      autor: autor.id,
+      alvo: acao.alvo,
+      impactos: aceita ? {
+        [autor.id]: { [acao.alvo]: { confianca: 15 } },
+        [acao.alvo]: { [autor.id]: { confianca: 15 } },
+      } : {},
+    });
+  }
 
   exigir(acao.tipo === "difamar", `ação desconhecida: ${acao.tipo}`);
   const alvo = personagem(estado, acao.alvo);
@@ -183,8 +244,28 @@ function executarAcao(estado, acao) {
 }
 
 export function avancarTurno(estado) {
+  return resolverTurno(estado);
+}
+
+export function resolverTurno(estado, acaoJogador = null, jogadorId = null) {
+  if (acaoJogador) {
+    exigir(acaoJogador.autor === jogadorId, "a ação não pertence ao jogador");
+    const validacao = validarAcao(estado, acaoJogador);
+    exigir(validacao.valida, validacao.motivo);
+  }
+
   estado.turno += 1;
+  const eventos = [];
+  if (acaoJogador) {
+    const evento = executarAcao(estado, acaoJogador);
+    if (evento) eventos.push(evento);
+  }
   const decisoes = estado.personagens
+    .filter((pessoa) => pessoa.id !== jogadorId)
     .map((pessoa) => decidirAcao(estado, pessoa.id));
-  return decisoes.map((acao) => executarAcao(estado, acao)).filter(Boolean);
+  for (const decisao of decisoes) {
+    const evento = executarAcao(estado, decisao);
+    if (evento) eventos.push(evento);
+  }
+  return eventos;
 }

@@ -107,6 +107,7 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 
 ## Estado atual
 
-Etapa 2 iniciada: o navegador mostra um mapa esquemático dos cinco ducados,
-permite trocar de perspectiva, avançar meses e salvar localmente. A interface
-usa os nomes históricos revisados, mas o desenho das fronteiras é provisório.
+O primeiro ciclo jogável existe: o jogador escolhe um dos cinco governantes e,
+a cada mês, pode conversar, oferecer um acordo, difamar ou aguardar; depois os
+outros agentes resolvem suas ações. O mapa continua esquemático e ainda falta
+inspeção visual num ambiente com navegador.

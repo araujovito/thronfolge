@@ -14,7 +14,6 @@
       </div>
       <div class="tempo">
         <span id="data">2 de julho de 936</span>
-        <button id="avancar" type="button">Avançar um mês</button>
       </div>
     </header>
 
@@ -31,7 +30,7 @@
       </section>
 
       <aside class="painel personagem-painel" aria-live="polite">
-        <p class="sobretitulo">Perspectiva selecionada</p>
+        <p class="sobretitulo">Seu personagem</p>
         <h2 id="nome-personagem">Carregando…</h2>
         <p id="titulo-personagem" class="titulo-personagem"></p>
         <dl class="atributos">
@@ -41,6 +40,20 @@
         </dl>
         <h3>Relações percebidas</h3>
         <div id="relacoes" class="relacoes"></div>
+        <section class="acoes" aria-labelledby="titulo-acoes">
+          <h3 id="titulo-acoes">Ação deste mês</h3>
+          <label for="alvo">Alvo</label>
+          <select id="alvo"></select>
+          <label for="acao">Ação</label>
+          <select id="acao">
+            <option value="conversar">Conversar em particular</option>
+            <option value="oferecer_acordo">Oferecer um acordo</option>
+            <option value="difamar">Questionar sua legitimidade</option>
+            <option value="aguardar">Aguardar</option>
+          </select>
+          <p id="previsao-acao" class="previsao-acao"></p>
+          <button id="confirmar-acao" type="button">Confirmar e avançar o mês</button>
+        </section>
       </aside>
 
       <section class="painel noticias-painel" aria-labelledby="titulo-noticias">
@@ -60,7 +73,13 @@
       </section>
     </main>
 
+    <dialog id="escolha-personagem" class="escolha-personagem">
+      <p class="sobretitulo">Julho de 936</p>
+      <h2>Quem você governará?</h2>
+      <p>Escolha uma perspectiva. Os outros governantes agirão por conta própria.</p>
+      <div id="opcoes-personagem" class="opcoes-personagem"></div>
+    </dialog>
+
     <script type="module" src="src/interface.js"></script>
   </body>
 </html>
-
