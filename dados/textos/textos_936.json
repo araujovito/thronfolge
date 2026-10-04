@@ -94,5 +94,36 @@
       "texto_curto": "A partir de 2 de julho de 936, a história é sua.",
       "classificacao": "liberdade"
     }
+  },
+  "explicacoes": {
+    "descricao": "Uma frase por decisão de agente, montada a partir do fator que mais pesou e, quando houver, da memória que o explica. {quem} decide, {sobre} é o outro, {lembranca} é o texto curto de uma memória e {mes} o mês dela.",
+    "classificacao": "liberdade",
+    "nota": "As fontes não explicam decisões assim; é recurso de legibilidade pedido pelas regras de qualidade do plano.",
+    "lembrancas": {
+      "conversa": "conversaram a sós em {mes}",
+      "amizade_aceita": "selaram amizade em {mes}",
+      "amizade_recusada": "a amizade foi recusada em {mes}",
+      "difamacao": "{sobre} contestou o direito dele em {mes}",
+      "apoio_concedido": "{sobre} prometeu-lhe apoio em {mes}",
+      "apoio_recusado": "{sobre} recusou-lhe apoio em {mes}"
+    },
+    "por_fator": {
+      "aceitou_por_confianca": "{quem} aceitou: confia em {sobre} desde que {lembranca}.",
+      "aceitou_por_direito": "{quem} aceitou: reconhece o direito de {sobre}.",
+      "recusou_por_rancor": "{quem} recusou: não esquece que {lembranca}.",
+      "recusou_por_desconfianca": "{quem} recusou: mal conhece {sobre} e ainda não confia nele.",
+      "recusou_por_direito": "{quem} recusou: não vê em {sobre} direito à coroa.",
+      "contestou_por_rancor": "{quem} contestou o direito de {sobre}: não esquece que {lembranca}.",
+      "contestou_por_ambicao": "{quem} contestou o direito de {sobre}: quer a coroa para si.",
+      "conversou_para_aproximar": "{quem} procurou {sobre} para se aproximar.",
+      "pediu_apoio": "{quem} pediu o apoio de {sobre}, de quem espera boa vontade.",
+      "aguardou": "{quem} esperou para ver o rumo dos outros.",
+      "evitou_contestar": "{quem} evitou novo ataque: contestações seguidas pesam contra quem as faz."
+    },
+    "regras_de_uso": [
+      "Mostrar só para quem conhece o acontecimento: o jogador vê a explicação de uma decisão se a viu ou soube dela.",
+      "A explicação vem das memórias e percepções de {quem}, não do estado verdadeiro.",
+      "Se não houver memória ligada, usar a variante sem {lembranca} (por_direito, por_desconfianca, por_ambicao)."
+    ]
   }
 }

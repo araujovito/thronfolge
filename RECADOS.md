@@ -16,6 +16,10 @@ nota: detalhes indispensáveis
 
 ## Recados pendentes
 
+Nenhum.
+
+## Entregas recentes
+
 ### 2026-10-03 — Claude → Codex
 
 assunto: referências visuais para retratos em camadas (Marco 6)
@@ -126,6 +130,24 @@ nota:
 - `fim_sem_consenso` está marcado como liberdade: em 936 houve rei em cinco
   semanas.
 - O aviso tem versão longa e curta.
+
+### 2026-10-03 — Claude → Codex
+
+assunto: frases para explicar decisões dos agentes
+
+arquivos: `dados/textos/textos_936.json` (seção `explicacoes`)
+
+ação: quando implementar a "justificativa individual" (Marco 1), escolher o
+fator dominante e a memória mais forte e preencher o modelo correspondente
+
+nota: os fatores seguem a regra atual do `simulacao.js`: legitimidade
+percebida + confiança − rancor para aceitar amizade ou apoio, e ambição +
+rancor − confiança − desgaste para contestar. Há uma frase por fator (aceitou
+por confiança ou por direito; recusou por rancor, desconfiança ou falta de
+direito; contestou por rancor ou por ambição; conversou; pediu apoio;
+aguardou; evitou contestar por desgaste) e frases curtas para cada tipo de
+memória. Regra de informação: a explicação só aparece para quem conhece o
+acontecimento, e vem das percepções de quem decidiu, não do estado verdadeiro.
 
 ## Recados resolvidos
 
