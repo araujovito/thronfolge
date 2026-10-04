@@ -1,0 +1,139 @@
+:root {
+  color-scheme: dark;
+  --fundo: #16140f;
+  --painel: #242018;
+  --painel-claro: #302a1f;
+  --texto: #eee4cf;
+  --muted: #b9ad96;
+  --ouro: #c9a34f;
+  --linha: #4d432f;
+  --sombra: rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 22% 10%, rgba(130, 97, 45, 0.12), transparent 32rem),
+    var(--fundo);
+  color: var(--texto);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+button { font: inherit; }
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.1rem clamp(1rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--linha);
+  background: rgba(20, 17, 12, 0.9);
+}
+
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin-bottom: 0; font-size: clamp(1.7rem, 4vw, 2.7rem); letter-spacing: 0.08em; }
+h2 { margin-bottom: 0.4rem; }
+h3 { margin-top: 1.5rem; font-size: 1rem; color: var(--ouro); }
+
+.sobretitulo {
+  margin-bottom: 0.25rem;
+  color: var(--ouro);
+  font: 700 0.68rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tempo { display: flex; align-items: center; gap: 1rem; }
+
+button {
+  border: 1px solid #d0aa56;
+  border-radius: 0.25rem;
+  padding: 0.65rem 0.9rem;
+  background: #9e762c;
+  color: #fff8e7;
+  cursor: pointer;
+}
+
+button:hover, button:focus-visible { filter: brightness(1.18); outline: 2px solid #f0d79d; }
+button.secundario { background: transparent; border-color: var(--linha); color: var(--muted); }
+
+.jogo {
+  display: grid;
+  grid-template-columns: minmax(30rem, 2fr) minmax(18rem, 0.8fr);
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.painel {
+  border: 1px solid var(--linha);
+  border-radius: 0.4rem;
+  background: linear-gradient(145deg, rgba(49, 42, 30, 0.96), rgba(31, 27, 21, 0.98));
+  box-shadow: 0 0.8rem 2rem var(--sombra);
+  padding: 1rem;
+}
+
+.cabecalho-painel { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+.aviso { color: var(--muted); font: 0.72rem/1.4 system-ui, sans-serif; text-align: right; }
+
+.mapa {
+  position: relative;
+  min-height: 33rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  border: 1px solid #5d5139;
+  border-radius: 0.3rem;
+  background: #191f1b;
+}
+
+.regiao {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  gap: 0.3rem;
+  width: 34%;
+  height: 34%;
+  border: 2px solid rgba(239, 221, 181, 0.5);
+  color: #fff9e9;
+  text-shadow: 0 1px 2px #000;
+  clip-path: polygon(12% 8%, 82% 0, 100% 32%, 88% 90%, 48% 100%, 0 72%, 4% 25%);
+}
+
+.regiao strong { font-size: clamp(0.9rem, 2vw, 1.25rem); }
+.regiao small { font-family: system-ui, sans-serif; }
+.regiao[aria-pressed="true"] { z-index: 4; outline: 4px solid #f5d98f; filter: brightness(1.2); }
+.regiao[data-id="saxonia"] { left: 50%; top: 4%; background: #80543c; }
+.regiao[data-id="lotaringia"] { left: 7%; top: 25%; background: #47677a; }
+.regiao[data-id="francia"] { left: 36%; top: 32%; background: #6d6440; }
+.regiao[data-id="suabia"] { left: 22%; top: 61%; background: #536947; }
+.regiao[data-id="baviera"] { left: 57%; top: 59%; background: #6f465b; }
+
+.titulo-personagem { color: var(--muted); min-height: 2.5rem; }
+.atributos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.atributos div { padding: 0.65rem; border: 1px solid var(--linha); background: var(--painel-claro); }
+.atributos dt { color: var(--muted); font: 0.7rem system-ui, sans-serif; }
+.atributos dd { margin: 0.2rem 0 0; font-size: 1.25rem; }
+.relacoes { display: grid; gap: 0.5rem; }
+.relacao { padding: 0.55rem 0; border-bottom: 1px solid var(--linha); }
+.relacao span { display: block; color: var(--muted); font: 0.75rem system-ui, sans-serif; }
+
+.noticias-painel { grid-column: 1 / -1; }
+.controles-save { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.estado-save { min-height: 1.2rem; color: var(--ouro); font: 0.8rem system-ui, sans-serif; }
+.noticias { display: grid; gap: 0.6rem; margin: 0; padding-left: 1.5rem; }
+.noticias li { padding: 0.65rem; background: rgba(0, 0, 0, 0.14); }
+.noticias time { color: var(--ouro); font: 0.72rem system-ui, sans-serif; }
+
+@media (max-width: 800px) {
+  .barra, .tempo, .cabecalho-painel { align-items: stretch; flex-direction: column; }
+  .jogo { grid-template-columns: 1fr; }
+  .noticias-painel { grid-column: auto; }
+  .mapa { min-height: 25rem; }
+  .atributos { grid-template-columns: 1fr; }
+}
+
