@@ -69,8 +69,8 @@ Hoje o usuário apenas observa. Este marco cria escolhas e consequências.
 **Claude**
 
 - [x] Revisar o significado político de eleição, aclamação e coroação em 936.
-- [ ] Escrever textos curtos para proposta, aceitação, recusa e difamação.
-- [ ] Separar formulação historicamente plausível de liberdade assumida pelo
+- [x] Escrever textos curtos para proposta, aceitação, recusa e difamação.
+- [x] Separar formulação historicamente plausível de liberdade assumida pelo
   design.
 
 **Concluído quando:** o jogador toma pelo menos uma decisão significativa por
@@ -81,10 +81,11 @@ mês e consegue alterar deliberadamente uma relação.
 **Codex**
 
 - [ ] Criar reivindicações e legitimidade explicadas por causas concretas.
-- [ ] Criar apoio político direcionado: cada grande apoia alguém ou ninguém.
+- [x] Criar apoio político direcionado: cada grande apoia alguém ou ninguém.
 - [ ] Implementar promessa, dívida e quebra de compromisso.
-- [ ] Realizar eleição/aclamação quando houver apoio suficiente.
-- [ ] Encerrar a campanha por vitória, derrota ou limite de 24 meses.
+- [x] Fazer os grandes escolherem o rei quando houver três apoios, marcando a
+  regra como simplificação e não como contagem histórica de votos.
+- [x] Encerrar a campanha por escolha régia ou falta de consenso em 24 meses.
 - [ ] Gerar relatório final com a cadeia de acontecimentos decisivos.
 - [ ] Simular centenas de campanhas para localizar vitórias automáticas,
   empates permanentes e estratégias dominantes.
@@ -93,7 +94,7 @@ mês e consegue alterar deliberadamente uma relação.
 
 - [x] Revisar quem participa da escolha real e quais simplificações são
   aceitáveis para cinco poderes.
-- [ ] Revisar nomes de títulos, reivindicações e cerimônias.
+- [x] Revisar nomes de títulos, reivindicações e cerimônias.
 - [ ] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
 
 **Concluído quando:** campanhas completas produzem vencedores diferentes por

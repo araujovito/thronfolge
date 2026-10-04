@@ -1,0 +1,53 @@
+{
+  "descricao": "Textos curtos da interface para a campanha de 936. Marcadores: {autor}, {alvo}, {mes}. Cada texto diz se a formulação é plausível para o século X ou liberdade de design.",
+  "convencoes": {
+    "plausivel": "prática ou vocabulário atestado nas fontes da época",
+    "liberdade": "simplificação ou invenção de jogo; não apresentar como fato",
+    "fontes": "dados/historico/escolha_regia_936.json e Widukind (tradução Schottin)"
+  },
+  "acoes": {
+    "conversar": {
+      "rotulo": "Conversar em particular",
+      "dica": "Uma conversa a sós pode aproximar os dois.",
+      "classificacao": "plausivel"
+    },
+    "propor_amizade": {
+      "rotulo": "Propor amizade",
+      "dica": "Aceita quem confia em você e reconhece o seu direito.",
+      "classificacao": "plausivel",
+      "nota": "O pacto de amizade (amicitia) foi o instrumento de Henrique I com os duques; Widukind I,26 diz que Eberhardo 'fez a paz e ganhou a amizade' de Henrique."
+    },
+    "pedir_apoio": {
+      "rotulo": "Pedir apoio para a coroa",
+      "dica": "O alvo pesa a confiança, o rancor e o direito que vê em você.",
+      "classificacao": "liberdade",
+      "nota": "Pedir apoio um a um antes da eleição é simplificação: as fontes mostram só a reunião final. Negociações prévias são prováveis, mas não descritas."
+    },
+    "difamar": {
+      "rotulo": "Contestar o direito dele",
+      "dica": "A contestação é pública: enfraquece o alvo e cria rancor.",
+      "classificacao": "plausivel",
+      "nota": "Henrique, irmão de Otto, contestou o direito do irmão alegando ter nascido filho de rei (DB)."
+    },
+    "aguardar": {
+      "rotulo": "Aguardar",
+      "dica": "Nenhuma ação política neste mês.",
+      "classificacao": "plausivel"
+    },
+    "contrapartida": {
+      "rotulo": "Pedir algo em troca",
+      "dica": "O alvo aceita, mas pede uma contrapartida.",
+      "classificacao": "plausivel",
+      "nota": "Para quando o alvo puder propor contrapartida. Exemplos de época: confirmar um cargo, devolver uma herança (Thankmar e Merseburg), autonomia como a da Baviera em 921, um casamento."
+    }
+  },
+  "eventos": {
+    "conversa": "{autor} conversou a sós com {alvo}.",
+    "amizade_aceita": "{alvo} aceitou a amizade de {autor}.",
+    "amizade_recusada": "{alvo} recusou a amizade de {autor}.",
+    "difamacao": "{autor} contestou publicamente o direito de {alvo}.",
+    "contrapartida_pedida": "{alvo} aceita, se {autor} lhe der algo em troca.",
+    "contrapartida_aceita": "{autor} atendeu ao pedido de {alvo}, e o pacto foi selado.",
+    "contrapartida_recusada": "{autor} não atendeu ao pedido de {alvo}, e não houve pacto."
+  }
+}
