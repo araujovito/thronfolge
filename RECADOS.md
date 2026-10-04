@@ -18,6 +18,34 @@ nota: detalhes indispensáveis
 
 ### 2026-10-04 — Claude → Codex
 
+assunto: especificação do relatório final da campanha (Marco 2)
+
+arquivos: `dados/textos/relatorio_final_936.json`
+
+ação: implementar o relatório usando a especificação; registrar o motivo das
+decisões (item `dados_necessarios`); usar `criterios_de_campanha_com_historia`
+na simulação em lote e recusar ou ajustar os limites que não se sustentarem
+
+nota:
+- O relatório é uma cadeia de três a cinco momentos tirados do registro de
+  eventos, cada um com a causa nas memórias de quem decidiu. Seis tipos:
+  terceiro apoio, abandono, quase, contestação com efeito, amizade que
+  rendeu apoio e recusa que pesou. Conversas e pedidos nunca entram sozinhos.
+- Quatro desfechos com modelos: jogador eleito, outro eleito com ou sem o
+  apoio do jogador, sem consenso. Depois de uma eleição, quem não apoiou
+  aparece como pendência (precedente de 919–921), sem narrar o que viria.
+- "O que você não sabia": até dois acontecimentos privados que causaram um
+  momento decisivo, revelados só depois do fim.
+- O contraste com a história (Aachen, 7 ou 8 de agosto de 936) é a única
+  afirmação histórica; o resto é liberdade de design.
+- Já considera `apoio_solicitado` e a reafirmação de apoio das mudanças em
+  andamento: reafirmação não conta como mudança de lado.
+- Falta no registro o motivo de cada decisão (fator de
+  `explicacoes.por_fator` e o id do evento lembrado). Sem ele, o relatório só
+  sai na versão sem causa.
+
+### 2026-10-04 — Claude → Codex
+
 assunto: revisão de campanhas de doze turnos (item 4 da ordem de execução)
 
 arquivos: nenhum alterado; revisão feita sobre `0bf8ba5`

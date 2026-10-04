@@ -113,7 +113,7 @@ mês e consegue alterar deliberadamente uma relação.
   aceitáveis para cinco poderes.
 - [x] Revisar nomes de títulos, reivindicações e cerimônias.
 - [x] Preparar um aviso histórico curto sobre linhas do tempo alternativas.
-- [ ] Definir quais decisões e viradas tornam uma campanha digna do relatório
+- [x] Definir quais decisões e viradas tornam uma campanha digna do relatório
   final, com modelos curtos para vitória e falta de consenso.
 - [ ] Revisar campanhas simuladas e apontar decisões incoerentes, pretendentes
   passivos, resultados sem causa legível e estratégias aparentemente óbvias.

@@ -1,0 +1,191 @@
+{
+  "descricao": "Especificação do relatório final da campanha de 936: quais acontecimentos entram, como reconhecê-los no registro de eventos e os modelos de texto para cada desfecho. Tudo aqui é design de jogo; as únicas afirmações históricas estão em contraste_historico.",
+  "convencoes": {
+    "plausivel": "prática ou vocabulário atestado nas fontes da época",
+    "liberdade": "simplificação ou invenção de jogo; não apresentar como fato",
+    "hipotese": "regra proposta pelo Claude; o Codex verifica e mede antes de adotar",
+    "marcadores": "{jogador}, {eleito}, {autor}, {alvo}, {de}, {para}, {pretendente}, {quem}, {mes}, {mes2}, {n}, {apoiadores}, {pendentes}, {lembranca}, {consequencia}",
+    "listas": "{apoiadores} e {pendentes} são nomes unidos por vírgula e 'e' antes do último: 'Eberhardo, Giselberto e Hermano'.",
+    "fontes": "dados/historico/escolha_regia_936.json"
+  },
+
+  "principio": "O relatório conta por que alguém virou rei, ou por que ninguém virou, numa cadeia de no máximo cinco momentos. Cada momento é um acontecimento real da partida, com a causa tirada das memórias de quem decidiu. Nada no relatório pode ser inventado para fechar a história.",
+
+  "estrutura": [
+    "titulo e manchete do desfecho",
+    "abertura fixa: a morte de Henrique I",
+    "de três a cinco momentos decisivos, em ordem cronológica",
+    "pendências (só quando houve rei)",
+    "o que você não sabia (até dois itens; opcional)",
+    "contraste com a história real",
+    "aviso: a partir de 2 de julho de 936, a história é sua"
+  ],
+
+  "momentos_decisivos": {
+    "nota": "Condições escritas sobre o registro de eventos. O histórico de apoios se reconstrói pelos eventos apoio_concedido (o alvo passa a apoiar o autor), a partir de cada grande apoiando a si mesmo; um apoio_concedido a quem o alvo já apoiava é reafirmação e não conta como mudança. Prioridade 1 é a mais alta.",
+    "tipos": [
+      {
+        "id": "terceiro_apoio",
+        "condicao": "o apoio_concedido que levou o eleito a três apoios no turno da eleição",
+        "prioridade": 1,
+        "obrigatorio_se": "houve rei",
+        "texto": "Em {mes}, {alvo} prometeu apoiar {autor}, e a escolha se fechou.",
+        "com_causa": "Em {mes}, {alvo} prometeu apoiar {autor}, porque {lembranca}, e a escolha se fechou.",
+        "classificacao": "liberdade"
+      },
+      {
+        "id": "abandono",
+        "condicao": "apoio_concedido em que o alvo deixou de apoiar um pretendente que não era ele mesmo",
+        "prioridade": 2,
+        "texto": "Em {mes}, {alvo} deixou {de} e passou a apoiar {autor}.",
+        "com_causa": "Em {mes}, {alvo} deixou {de} e passou a apoiar {autor}: {lembranca}.",
+        "classificacao": "plausivel",
+        "nota": "Mudar de lado era possível e grave na época (rebeliões de 938 e 939). Prioridade sobe para 1 se {de} ou {autor} for o eleito ou o jogador."
+      },
+      {
+        "id": "quase",
+        "condicao": "um pretendente chegou a dois apoios e perdeu um antes de alguém chegar a três",
+        "prioridade": 2,
+        "texto": "Em {mes}, {pretendente} esteve a um apoio da coroa; em {mes2}, {quem} o deixou.",
+        "classificacao": "liberdade"
+      },
+      {
+        "id": "contestacao_com_efeito",
+        "condicao": "difamacao cujo evento é citado como causa de uma recusa ou de um abandono do alvo nos três turnos seguintes",
+        "prioridade": 2,
+        "texto": "Em {mes}, {autor} contestou publicamente o direito de {alvo}; {consequencia}.",
+        "consequencias": {
+          "recusa": "pouco depois, {quem} recusou-se a apoiá-lo",
+          "abandono": "pouco depois, {quem} deixou de apoiá-lo"
+        },
+        "classificacao": "plausivel",
+        "nota": "Contestação sem efeito registrado não entra: só ruído."
+      },
+      {
+        "id": "amizade_que_rendeu",
+        "condicao": "amizade_aceita entre dois grandes seguida, em qualquer turno posterior, de apoio_concedido entre os mesmos dois",
+        "prioridade": 3,
+        "texto": "A amizade selada em {mes} entre {autor} e {alvo} virou apoio em {mes2}.",
+        "classificacao": "plausivel",
+        "nota": "Amicitia como instrumento político: ver textos_936.json, propor_amizade."
+      },
+      {
+        "id": "recusa_que_pesou",
+        "condicao": "apoio_recusado ao eleito por alguém que terminou como pendência, ou recusa ao jogador quando ele estava com dois apoios",
+        "prioridade": 3,
+        "texto": "Em {mes}, {alvo} recusou-se a apoiar {autor}.",
+        "com_causa": "Em {mes}, {alvo} recusou-se a apoiar {autor}: {lembranca}.",
+        "classificacao": "plausivel"
+      }
+    ],
+    "nunca_entram_sozinhos": [
+      "conversa: só aparece como {lembranca} de um momento decisivo",
+      "apoio_solicitado: o pedido em si não entra; entra a resposta, se for decisiva",
+      "apoio_concedido que só reafirma um apoio já existente",
+      "amizade_recusada e apoio_recusado sem consequência posterior",
+      "acontecimentos de quem não era pretendente nem apoiador relevante no desfecho"
+    ],
+    "selecao": [
+      "Incluir terceiro_apoio sempre que houver rei.",
+      "Completar até cinco momentos pela prioridade.",
+      "Empate de prioridade: primeiro o que envolve o jogador, depois o mais tardio.",
+      "Um mesmo par de personagens aparece no máximo duas vezes.",
+      "Exibir em ordem cronológica, não por prioridade."
+    ],
+    "causa": {
+      "regra": "{lembranca} vem do motivo registrado na decisão (ver dados_necessarios) e usa as frases de textos_936.json, explicacoes.lembrancas.",
+      "sem_memoria": "Se o motivo não cita memória, usar o texto sem causa. Não inventar razão."
+    }
+  },
+
+  "modelos": {
+    "abertura": {
+      "texto": "Em 2 de julho de 936, Henrique I morreu em Memleben. Designara Otto como sucessor, mas só os grandes podiam fazê-lo rei.",
+      "classificacao": "plausivel"
+    },
+    "jogador_eleito": {
+      "titulo": "Crônica da escolha do rei",
+      "manchete": "{jogador} é rei.",
+      "subtitulo": "Em {mes}, os grandes fizeram-no rei e juraram-lhe fidelidade, com o apoio de {apoiadores}.",
+      "classificacao": "liberdade"
+    },
+    "outro_eleito_com_apoio_do_jogador": {
+      "titulo": "Crônica da escolha do rei",
+      "manchete": "{eleito} é rei, com o seu apoio.",
+      "subtitulo": "Em {mes}, os grandes fizeram {eleito} rei e juraram-lhe fidelidade, com o apoio de {apoiadores}.",
+      "classificacao": "liberdade"
+    },
+    "outro_eleito_sem_apoio_do_jogador": {
+      "titulo": "Crônica da escolha do rei",
+      "manchete": "{eleito} é rei, sem o seu apoio.",
+      "subtitulo": "Em {mes}, os grandes fizeram {eleito} rei, com o apoio de {apoiadores}. Você ainda não o reconheceu.",
+      "classificacao": "liberdade"
+    },
+    "sem_consenso": {
+      "titulo": "Crônica de um reino sem rei",
+      "manchete": "Os grandes não chegaram a acordo.",
+      "subtitulo": "Em {mes}, o reino segue sem rei reconhecido por todos.",
+      "mais_perto": "Quem esteve mais perto foi {pretendente}, com {n} apoios em {mes2}.",
+      "jogador_mais_perto": "Você esteve mais perto que todos: {n} apoios em {mes2}.",
+      "classificacao": "liberdade",
+      "nota": "Em 936 houve rei em cinco semanas; o interregno é hipótese de jogo. Empate em 'mais perto': citar o que chegou primeiro."
+    },
+    "pendencias": {
+      "texto": "{pendentes} não prometeram apoio. O novo rei terá de obter o reconhecimento deles, por acordo ou pela força.",
+      "um_so": "{pendentes} não prometeu apoio. O novo rei terá de obter o reconhecimento dele, por acordo ou pela força.",
+      "classificacao": "plausivel",
+      "nota": "Precedente de 919: Henrique I foi feito rei por francos e saxões; a Suábia aderiu no mesmo ano e a Baviera só em 921, por acordo. Não afirmar o que aconteceria depois: é gancho para sistemas futuros."
+    },
+    "o_que_voce_nao_sabia": {
+      "titulo": "O que você não sabia",
+      "texto": "Em {mes}, {autor} conversou a sós com {alvo}.",
+      "condicao": "acontecimento privado, que o jogador não conheceu, citado como causa de um momento decisivo",
+      "limite": 2,
+      "classificacao": "liberdade",
+      "nota": "Só depois do fim. Recompensa o sistema de conhecimento parcial sem vazar informação durante a partida."
+    }
+  },
+
+  "contraste_historico": {
+    "otto_eleito": "Na história também foi Otto: em Aachen, a 7 ou 8 de agosto de 936, cinco semanas depois da morte do pai, e com os quatro duques servindo-o no banquete da coroação.",
+    "outro_eleito": "Na história, Otto foi feito rei em Aachen, a 7 ou 8 de agosto de 936, e os quatro duques serviram-no no banquete da coroação.",
+    "sem_consenso": "Na história, Otto foi feito rei em Aachen, a 7 ou 8 de agosto de 936, cinco semanas depois da morte do pai.",
+    "classificacao": "plausivel",
+    "fontes": ["widukind_schottin (II,1–2)", "db_otto_i"],
+    "nota": "Datas e banquete como em escolha_regia_936.json, etapas eleicao e banquete. Não citar as rebeliões de 938–939 aqui: viriam como spoiler de uma história que a partida não percorreu."
+  },
+
+  "o_que_fica_de_fora": [
+    "Aclamação, unção e coroação depois da eleição: o jogo não as simula, e narrá-las seria roteiro.",
+    "Juízo sobre o jogador (nota, ranking, 'bom' ou 'mau' rei).",
+    "Números internos: pontuação, confiança e rancor nunca aparecem como valores."
+  ],
+
+  "criterios_de_campanha_com_historia": {
+    "classificacao": "hipotese",
+    "nota": "Para a simulação em lote do Marco 2. O Codex mede; os limites numéricos são pontos de partida.",
+    "sinais_de_boa_campanha": [
+      "o desfecho não está decidido antes do turno 6",
+      "houve pelo menos um abandono ou um quase",
+      "pelo menos dois pretendentes chegaram a dois apoios em algum momento",
+      "todo momento decisivo selecionado tem causa com memória",
+      "o relatório reúne pelo menos três momentos"
+    ],
+    "sinais_de_campanha_sem_historia": [
+      "eleição sem nenhum abandono nem quase",
+      "o mesmo eleito com os mesmos apoiadores na maioria das campanhas sem jogador",
+      "jogar ativamente com um personagem dá resultado pior que deixá-lo à IA",
+      "momentos decisivos sem causa registrada"
+    ],
+    "observado_em_0bf8ba5": "Sem jogador, Otto é eleito em dezembro de 936 (turno 5), sempre com Eberhardo e Giselberto, sem abandono: hoje a campanha passiva cai em 'sem história'."
+  },
+
+  "dados_necessarios": {
+    "nota": "O que o relatório precisa e o registro de eventos ainda não guarda.",
+    "itens": [
+      "motivo nas decisões de aceitar, recusar, contestar e mudar de apoio: o fator de explicacoes.por_fator e, quando houver, o id do evento lembrado; vale também para decisões do jogador (motivo nulo)",
+      "em apoio_concedido, quem o alvo apoiava antes ({de}); hoje dá para reconstruir, mas guardar evita erro",
+      "nada mais: datas, autores e alvos já estão nos eventos"
+    ]
+  }
+}
