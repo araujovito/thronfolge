@@ -9,13 +9,16 @@
     },
     "nomes": "nome em português na interface; forma histórica/alemã em nome_historico",
     "datas": "ano ou [ano, mês, dia]; intervalo como texto quando a fonte dá intervalo",
-    "casa": "rótulo de jogo para a linhagem (convenção historiográfica), não título dado pela fonte"
+    "casa": "rótulo de jogo para a linhagem (convenção historiográfica), não título dado pela fonte",
+    "conjuges_em_936": "id do personagem quando ele está no arquivo; nome por extenso quando não está"
   },
   "fontes": {
     "db_henrique_i": "https://www.deutsche-biographie.de/gnd11854831X.html",
     "db_otto_i": "https://www.deutsche-biographie.de/sfz74082.html",
     "db_matilde": "https://www.deutsche-biographie.de/ppn119162547.html",
     "db_thankmar": "https://www.deutsche-biographie.de/gnd138794502.html",
+    "db_konrad_vermelho": "https://www.deutsche-biographie.de/sfz70411.html",
+    "hls_reginlinde": "https://hls-dhs-dss.ch/de/articles/012896/",
     "db_henrique_baviera": "https://www.deutsche-biographie.de/sfz70052.html",
     "db_bruno": "https://www.deutsche-biographie.de/118674730.html",
     "db_liudolfo": "https://www.deutsche-biographie.de/sfz70539.html",
@@ -54,7 +57,7 @@
       "conjuges_em_936": [],
       "titulos_em_936": [],
       "fontes": ["db_henrique_i", "db_thankmar"],
-      "notas": "Filha de Erwin de Merseburg. Casamento com Henrique I anulado antes de 909 (ela já tinha feito votos). Data de morte não encontrada: incerto se vive em 936."
+      "notas": "Filha de Erwin de Merseburg. Casamento com Henrique I anulado antes de 909 (ela já tinha feito votos). Só o dia da morte (21 de junho) aparece em fonte secundária; o ano é desconhecido. Continua incerto se vive em 936: no jogo, tratar como fora de cena."
     },
     {
       "id": "matilde",
@@ -145,13 +148,13 @@
       "nome_historico": "Liutgard",
       "casa": "liudolfingos",
       "vivo_em_936": true,
-      "nascimento": { "valor": "c. 931", "certeza": "incerto" },
+      "nascimento": { "valor": "c. 931", "certeza": "aproximado" },
       "morte": { "valor": 953, "certeza": "fato" },
       "pais": ["otto", "edite"],
       "conjuges_em_936": [],
       "titulos_em_936": [],
-      "fontes": ["db_otto_i"],
-      "notas": "A DB dá só a morte. O ano de nascimento não foi conferido em fonte."
+      "fontes": ["db_otto_i", "db_konrad_vermelho"],
+      "notas": "A ADB, no verbete do marido Conrado, o Vermelho, diz que ela nasceu por volta de 931; casamento provavelmente em 947. Morre em 18/11/953."
     },
     {
       "id": "henrique",
@@ -242,10 +245,10 @@
       "vivo_em_936": true,
       "morte": { "valor": [937, 7, 14], "local": "Ratisbona", "certeza": "fato" },
       "pais": [],
-      "conjuges_em_936": ["incerto"],
+      "conjuges_em_936": ["Judite (provável)"],
       "titulos_em_936": ["duque da Baviera"],
       "fontes": ["db_arnulfo"],
-      "notas": "Duque desde 907 (morre em 937). Desde o acordo de Ratisbona (921) com ampla autonomia. O epíteto 'o Mau' vem de cronistas monásticos por causa das secularizações: rótulo hostil, não traço de personalidade. Casou com Agnes e com Judite; qual estava viva em 936 não foi conferido. Filha Judite casa com Henrique em 936/37."
+      "notas": "Duque desde 907 (morre em 937). Desde o acordo de Ratisbona (921) com ampla autonomia. O epíteto 'o Mau' vem de cronistas monásticos por causa das secularizações: rótulo hostil, não traço de personalidade. Casou primeiro com Agnes (filha de um príncipe húngaro, segundo a lenda) e depois com Judite, filha do conde Eberhardo do Sülichgau (DB). Nenhuma data de morte de Judite foi encontrada: é a cônjuge provável em 936, não confirmada. Filha Judite casa com Henrique em 936/37."
     },
     {
       "id": "hermano_suabia",
@@ -255,10 +258,10 @@
       "vivo_em_936": true,
       "morte": { "valor": [949, 12, 10], "certeza": "fato" },
       "pais": [],
-      "conjuges_em_936": ["incerto"],
+      "conjuges_em_936": ["Reginlinde"],
       "titulos_em_936": ["duque da Suábia"],
-      "fontes": ["db_hermano_suabia"],
-      "notas": "Duque desde 926. Primo de Eberhardo e de Conrado I. Casado com Reginlinde, viúva do duque Burcardo I. Filha única Ida. Fiel a Henrique I e a Otto."
+      "fontes": ["db_hermano_suabia", "hls_reginlinde"],
+      "notas": "Duque desde 926. Primo de Eberhardo e de Conrado I. Casado com Reginlinde, viúva do duque Burcardo II (morta em 958/959, HLS), portanto viva em 936. Filha única Ida. Fiel a Henrique I e a Otto."
     },
     {
       "id": "hermano_billung",
@@ -308,9 +311,8 @@
     { "id": "lotaringia", "nome": "Lotaríngia", "governante": "giselberto", "nota": "" }
   ],
   "pendencias": [
-    "Hatheburga: viva ou não em 936.",
-    "Liutgarda: ano de nascimento com fonte.",
-    "Arnulfo e Hermano da Suábia: qual cônjuge vigente em julho de 936.",
-    "Convenção de nomes ainda aberta no contexto.md (Otto ou Otão, Eberhardo ou Eberardo)."
+    "Hatheburga: ano da morte desconhecido; viva ou não em 936 segue incerto.",
+    "Arnulfo: Judite é a cônjuge provável em 936, sem data de morte confirmada.",
+    "Convenção de nomes: decisão do Vitor (ver contexto.md)."
   ]
 }

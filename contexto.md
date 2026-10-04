@@ -103,7 +103,15 @@ Henrique ainda são solteiros (casamentos em 937 e 936/37).
 - Tamanho e divisão do mapa inicial.
 - Casas e personagens jogáveis além dos Liudolfingas.
 - Condições de vitória e duração média da campanha.
-- Idioma final da interface e convenção de nomes históricos.
+- Idioma final da interface.
+- Convenção de nomes (decisão do Vitor). Uso provisório nos dados: forma
+  portuguesa quando há tradição em português (Henrique, Matilde, Edite,
+  Arnulfo, Hermano, Giselberto, Liudolfo); forma original quando não há
+  (Thankmar, Siegfried, Gero). Casos ambíguos:
+  - Otto (forma original, a usada hoje) ou Otão (forma tradicional em
+    português);
+  - Eberhardo (a usada hoje) ou Eberardo.
+  Qualquer escolha só muda o campo `nome`; `nome_historico` fica igual.
 
 ## Estado atual
 
